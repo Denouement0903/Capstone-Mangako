@@ -1,0 +1,17 @@
+{
+    "productID": 1,
+    "prodName": "Berserk Volume 1",
+    "prodDescription": "Created by Kentaro Miura, Berserk is manga mayhem to the extreme - violent, horrifying, and mercilessly funny - and the wellspring for the internationally popular anime series. Not for the squeamish or the easily offended, Berserk asks for no quarter - and offers none! His name is Guts, the Black Swordsman, a feared warrior spoken of only in whispers. Bearer of a gigantic sword, an iron hand, and the scars of countless battles and tortures, his flesh is also indelibly marked with The Brand, an unholy symbol that draws the forces of darkness to him and dooms him as their sacrifice. But Guts won't take his fate lying down; he'll cut a crimson swath of carnage through the ranks of the damned - and anyone else foolish enough to oppose him! Accompanied by Puck the Elf, more an annoyance than a companion, Guts relentlessly follows a dark, bloodstained path that leads only to death...or vengeance.",
+    "category": "Action Adventure",
+    "price": 962,
+    "imgURL": "https://i.postimg.cc/BQ1kdt9X/Berserk-vol01.png"
+},
+{
+    "productID": 2,
+    "prodName": "Vagabond Volume 1",
+    "prodDescription": "Real-life figure Miyamoto Musashi was the most celebrated samurai of all time. The quintessential warrior-philosopher, Musashi authored A Book of Five Rings, a classic treatise in the canon of world philosophy and military strategy. But the path to enlightenment is an endless journey, and to get there through violent means--by way of the sword--makes mere survival an even greater challenge. At seventeen years of age, Miyamoto Musashi--still known by his childhood name, Shinmen Takezō--was a wild young brute just setting out along the way of the sword. In the aftermath of the epic Battle of Sekigahara, Takezō finds himself a fugitive survivor on the losing side of the war. Takezō's vicious nature has made him an outcast even in his own village, and he is hunted down like an animal. At this crucial crossroads in Takezō's life, an eccentric monk and a childhood friend are the only ones who can help him find his way.",
+    "category": "Samurai",
+    "price": 720,
+    "imgURL": "https://i.postimg.cc/zvLdT2Sx/vagabond-vol-1-vizbig-edition-9781421520544-hr.jpg"
+},
+
