@@ -7,16 +7,61 @@ const {createToken} = require('../middleware/AuthenticatedUser');
 
 
 // Cart
-// class Cart {
-//     fetchUserCartItems(req, res){
-//     // Retrieve all items associated with the user's cart
-//     const userId = req.params.userId;
-//     const cartItems = [];
-          
-//     // Return the cart items as a JSON response
-//     res.json({ userId: userId, items: cartItems });
-//     }
-// }
+class Cart {
+    fetchUserCart(req, res){
+        const userID = req.params.userID;
+        const query = `
+          SELECT c.userID, c.productID, p.prodName, p.price, c.quantity
+          FROM Cart c
+          INNER JOIN Products p ON c.productID = p.productID
+          WHERE c.userID = ?
+        `;
+        database.query(query, [userID], (error, results) => {
+          if (error) throw error;
+          res.json(results);
+        });
+    };
+    addUserCartProduct(req, res){
+        const userID = req.params.userID;
+        const { productID, quantity } = req.body;
+        const query = `
+          INSERT INTO Cart (userID, productID, quantity)
+          VALUES (?, ?, ?)
+        `;
+        database.query(query, [userID, productID, quantity], (error, results) => {
+          if (error) throw error;
+          res.send('Product added to cart');
+        });
+    };
+    updateUserCartProduct(req, res){
+        const userID = req.params.userID;
+        const productID = req.params.productID;
+        const { quantity } = req.body;
+        const query = `
+          UPDATE Cart
+          SET quantity = ?
+          WHERE userID = ? AND productID = ?
+        `;
+        database.query(query, [quantity, userID, productID], (error, results) => {
+          if (error) throw error;
+          res.send('Cart item updated');
+        });
+    };
+    deleteUserCartProduct(req, res){
+        const userID = req.params.userID;
+        const productID = req.params.productID;
+        const query = `
+          DELETE FROM Cart
+          WHERE userID = ? AND productID = ?
+        `;
+        database.query(query, [userID, productID], (error, results) => {
+          if (error) throw error;
+          res.send('Cart item removed');
+        });
+    }
+}
+
+
 
 // User
 class User {
@@ -234,7 +279,7 @@ class Product {
 }
 // Export User class
 module.exports = {
-    // Cart,
+    Cart,
     User, 
     Product
 }

@@ -92,3 +92,30 @@
         }
     ]
 }
+
+
+
+//========Users===========
+
+{
+    "userID": ,
+    "firstName": "",
+    "lastName": "",
+    "gender": "",
+    "cellphoneNumber": "",
+    "emailAdd": "@gmail.com",
+    "userPass": ""
+
+}
+
+
+{
+    "userID": 1,
+    "firstName": "Deno",
+    "lastName": "Rautenbach",
+    "gender": "Male",
+    "cellphoneNumber": "0789173500",
+    "emailAdd": "denorauten@gmail.com",
+    "userPass": "Deno12345"
+
+}
