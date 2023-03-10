@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-  <h1>This is an about page</h1>
+    <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInLeftBig">Contact</h1>
   </div>
 </template>
 

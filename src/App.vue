@@ -1,19 +1,37 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/contact">Contact</router-link>
-  </nav>
+  <Navbar/>
   <router-view/>
+  <FooterComponent/>
 </template>
 
+<script>
+import Navbar from './components/Navbar.vue';
+import FooterComponent from '../src/components/FooterComponent.vue';
+export default {
+  components: {
+    Navbar,
+    FooterComponent
+}
+}
+
+</script>
+
 <style>
+@import url('https://fonts.cdnfonts.com/css/manga-temple');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Manga Temple', sans-serif;                                             
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #e2e4e6
+}
+
+body{
+  background-image: url('https://i.postimg.cc/CxSWqdr1/4567147-rurouni-kennshin-anime-manga-himura-kenshin-samurai-x.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  background-attachment: fixed;
 }
 
 nav {
@@ -26,6 +44,8 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: red;
 }
+
+
 </style>
