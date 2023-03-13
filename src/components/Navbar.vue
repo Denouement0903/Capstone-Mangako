@@ -13,7 +13,7 @@
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-          <i class="fa-solid fa-bars"></i>
+          <i class="fa-solid fa-bars icon-white"></i>
           </button>
   
           <!-- Collapsible wrapper -->
@@ -50,7 +50,7 @@
           <div class="d-flex align-items-center">
             <!-- Icon -->
             <router-link class="nav-link" to="/login">Login</router-link>
-              <router-link class="nav-link mx-5" to="#">Register</router-link>
+              <router-link class="nav-link mx-5" to="/register">Register</router-link>
           </div>
           <!-- Right elements -->
         </div>
@@ -78,5 +78,9 @@ li {
 }
 a {
   color: white;
+}
+
+.icon-white {
+  color: white
 }
 </style>

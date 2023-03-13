@@ -1,7 +1,15 @@
 <template>
-  <Navbar/>
-  <router-view/>
-  <FooterComponent/>
+  <div>
+    <header>
+      <Navbar/>
+    </header>
+    <main>
+      <router-view/>
+    </main>
+    <footer >
+      <FooterComponent/>
+    </footer>
+  </div>
 </template>
 
 <script>

@@ -63,7 +63,7 @@ export default createStore({
       if(error) {
         console.error(error);
       } else{
-        const { data } = await axios.get('/admin') //replace '/admin' with your API endpoint for getting admin data
+        const { data } = await axios.get('/admin')
         commit('setItems', data.items);
       }
     },
@@ -91,13 +91,12 @@ export default createStore({
         dispatch('admin')
       }
     },
-    fetchProducts : async (context)=> {
+    async fetchProducts(context) {
       try {
-        const res = await fetch(`${backendLink}`);
-        const results = await res.json();
-        context.commit('setProducts', results.products);
-      }catch(e) {
-        context.commit('setMsg', e);
+        const response = await axios.get(`${backendLink}`);
+        context.commit('setProducts', response.data.products);
+      } catch (error) {
+        context.commit('setMessage', error.message);
       }
     }
   }
