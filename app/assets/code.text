@@ -1,14 +1,14 @@
 {
     "results": [
-        {
-            "productID": 1,
-            "prodName": "Berserk Volume 1",
-            "prodDescription": "Created by Kentaro Miura, Berserk is manga mayhem to the extreme - violent, horrifying, and mercilessly funny - and the wellspring for the internationally popular anime series. Not for the squeamish or the easily offended, Berserk asks for no quarter - and offers none! His name is Guts, the Black Swordsman, a feared warrior spoken of only in whispers. Bearer of a gigantic sword, an iron hand, and the scars of countless battles and tortures, his flesh is also indelibly marked with The Brand, an unholy symbol that draws the forces of darkness to him and dooms him as their sacrifice. But Guts won't take his fate lying down; he'll cut a crimson swath of carnage through the ranks of the damned - and anyone else foolish enough to oppose him! Accompanied by Puck the Elf, more an annoyance than a companion, Guts relentlessly follows a dark, bloodstained path that leads only to death...or vengeance.",
-            "category": "Action Adventure",
-            "price": 962,
-            "prodQuantity": null,
-            "imgURL": "https://i.postimg.cc/BQ1kdt9X/Berserk-vol01.png"
-        },
+{
+"productID": 1,
+"prodName": "Berserk Volume 1",
+"prodDescription": "Created by Kentaro Miura, Berserk is manga mayhem to the extreme - violent, horrifying, and mercilessly funny - and the wellspring for the internationally popular anime series. Not for the squeamish or the easily offended, Berserk asks for no quarter - and offers none! His name is Guts, the Black Swordsman, a feared warrior spoken of only in whispers. Bearer of a gigantic sword, an iron hand, and the scars of countless battles and tortures, his flesh is also indelibly marked with The Brand, an unholy symbol that draws the forces of darkness to him and dooms him as their sacrifice. But Guts won't take his fate lying down; he'll cut a crimson swath of carnage through the ranks of the damned - and anyone else foolish enough to oppose him! Accompanied by Puck the Elf, more an annoyance than a companion, Guts relentlessly follows a dark, bloodstained path that leads only to death...or vengeance.",
+"category": "Action Adventure",
+"price": 962,
+"prodQuantity": null,
+"imgURL": "https://i.postimg.cc/BQ1kdt9X/Berserk-vol01.png"
+},
         {
             "productID": 2,
             "prodName": "Vagabond Volume 1",
