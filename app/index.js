@@ -9,16 +9,35 @@ const PORT = process.env.PORT || 2021;
 
 app.get('/', (req, res, next) => {
     res.sendFile(__dirname + '/view/index.html')
-});
+  });
 
-app.use(cors());
-app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+  let corsOptions =  {
+    origin: 'http://localhost:8080/'
+}
 
+
+app.use( 
+    (req, res, next)=> {
+        res.header('Access-Control-Allow-Origin', 'http://localhost:8080')
+        res.header("Access-Control-Allow-Credentials", "true")
+        res.header("Access-Control-Allow-Methods", "*")
+        res.header("Access-Control-Allow-Headers", "*")
+        next();
+    });
 app.use(route);
+app.use(
+    cors(),
+    cookieParser(),
+    express.json,
+    express.urlencoded({extended: false})
+)
+
 app.use(errorHandling);
 
-app.listen(PORT, () => {
-    console.log(`API is running on http://localhost:${PORT}`);
-});
+
+app.listen(
+    PORT,
+    () => {
+        console.log(`API is running on http://localhost:${PORT}`);
+    }
+)
