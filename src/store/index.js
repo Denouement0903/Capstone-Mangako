@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 
-const backendLink = "https://mangako.onrender.com"
+const backendLink = "https://mangako.onrender.com/"
 
 export default createStore({
   state: {
@@ -37,7 +37,7 @@ export default createStore({
     clearUser(state) {
       state.user = null
     },
-
+  },
   actions: {
     async login(context, payload){
       const res = await axios.post(`${backendLink}login`, payload);
@@ -101,5 +101,4 @@ export default createStore({
       }
     }
   }
-}
 })

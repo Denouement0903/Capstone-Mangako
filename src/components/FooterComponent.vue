@@ -1,14 +1,14 @@
 <template lang="">
     <div>
         <!-- Footer -->
-    <footer class="page-footer font-small cyan darken-3 fixed-bottom bg-black opacity-75">
+    <footer class="page-footer font-small cyan darken-3 bg-black opacity-75">
         <!-- Footer Elements -->
         <div class="container">
         <!-- Grid row-->
         <div class="row">
             <!-- Grid column -->
             <div class="col-md-12 py-5">
-            <div class="mb-5 flex-center fixed-bottom">
+            <div class="mb-5 flex-center">
     
                 <!-- Firebase -->
                 <a class="fb-ic">
@@ -40,7 +40,7 @@
         <!-- Footer Elements -->
     
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2023 Copyright:
+        <div class="footer-copyright text-center">© 2023 Copyright:
         <a href="/"> Deno Rautenbach</a>
         </div>
         <!-- Copyright -->
@@ -55,6 +55,5 @@ export default {
     name: 'FooterComponent'
 }
 </script>
-<style lang="scoped">
-
+<style scoped>
 </style>

@@ -49,7 +49,7 @@
           <!-- Right elements -->
           <div class="d-flex align-items-center">
             <!-- Icon -->
-            <router-link class="nav-link" to="">Login</router-link>
+            <router-link class="nav-link" to="/login">Login</router-link>
               <router-link class="nav-link mx-5" to="#">Register</router-link>
           </div>
           <!-- Right elements -->
