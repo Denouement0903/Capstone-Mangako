@@ -92,11 +92,13 @@ export default createStore({
       }
     },
     async fetchProducts(context) {
+      const response = await axios.get(`${backendLink}products`);
       try {
-        const response = await axios.get(`${backendLink}`);
-        context.commit('setProducts', response.data.products);
+        context.commit('setProducts', response.data.results);
+        console.log(response);
       } catch (error) {
         context.commit('setMessage', error.message);
+        console.log(response);
       }
     }
   }
