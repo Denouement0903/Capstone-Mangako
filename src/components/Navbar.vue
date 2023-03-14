@@ -49,8 +49,9 @@
           <!-- Right elements -->
           <div class="d-flex align-items-center">
             <!-- Icon -->
+            <router-link class="nav-link m-3" to="/cart"><i class="fa-solid fa-cart-shopping"></i></router-link>
             <router-link class="nav-link" to="/login">Login</router-link>
-              <router-link class="nav-link mx-5" to="/register">Register</router-link>
+              <router-link class="nav-link m-3" to="/register">Register</router-link>
           </div>
           <!-- Right elements -->
         </div>

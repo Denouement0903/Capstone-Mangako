@@ -1,16 +1,25 @@
 <template>
   <div class="home">
-    <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInRightBig">Welcome to Mangako</h1>
-    <h2 class="display-3 mx-5 my-5 text-center animate__animated animate__fadeInLeftBig">Your ONE-STOP Shop for Manga</h2>
-    <h2 class="display-5 mx-5 my-5 text-center animate__animated animate__fadeInRightBig">Preview</h2>
-    <div class="book w-25 h-50 mx-auto">
-      <div class="book-cover">
-        
-      </div>
-      <div class="book-content">
-  
-      </div>
-    </div>
+    <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInLeftBig">Welcome to Mangako</h1>
+    <h2 class="display-3 mx-5 my-5 text-center animate__animated animate__fadeInRightBig">Your ONE-STOP Shop for Manga</h2>
+    <h3 class="display-5 mx-5 my-5 text-center">Preview Our Products...</h3>
+   <div class="container-fluid">
+	<div class="row">
+		<div class="col-5">
+			<div class="book w-25 h-50 mx-auto">
+				<div class="book-cover">
+				</div>
+				<div class="book-content">
+				</div>	
+			</div>
+		</div>
+		<div class="col-7">
+			<h4>Death Note Volume 1</h4>
+			<p>In Tokyo, a disaffected high school student named Light Yagami finds the "Death Note", a mysterious black notebook that can kill anyone as long as the user knows both the target's name and face. Initially terrified of its god-like power, Light considers the possibilities of the Death Note's abilities and kills high-profile Japanese criminals, then targets international criminals. Five days after discovering the notebook, Light is visited by Ryuk, a "shinigami" and the Death Note's previous owner. Ryuk, invisible to anyone who has not touched the notebook, reveals that he dropped the notebook into the human world out of boredom and is amused by Light's actions</p>
+			<button type="button" class="btn btn-danger btn-lg">Buy now</button>
+		</div>
+	</div>
+   </div>
   </div>
 </template>
 
@@ -28,6 +37,7 @@ export default {
 body {
 	margin: 0;
 	padding: 0;
+	overflow-x: hidden;
 }
 
 h1,
@@ -40,8 +50,8 @@ p {
 }
 
 .book {
-	--book-height: 100vh;
-	--book-ratio: 1.4;
+	--book-height: 60vh;
+	--book-ratio: 1.6;
 }
 
 .book > div {
@@ -147,6 +157,28 @@ p {
 .book:hover > .book-content h3,
 .book:hover > .book-content p {
 	opacity: 1;
+}
+
+
+h3 {
+  background: linear-gradient(90deg, red, #fff, #000);
+  letter-spacing: 5px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: shine 14s linear infinite;
+  position: relative;
+}
+
+@keyframes shine {
+  0% {
+    background-position-x: -500%;
+  }
+  100% {
+    background-position-x: 500%;
+  }
 }
 
 </style>

@@ -2,7 +2,7 @@
     <div class="products">
       <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInRightBig">Products</h1>
       <LoaderComp v-if="!products"/>
-      <div class="container-fluid p-5 m-5">
+      <div class="container-fluid p-5 mx-auto">
         <div class="row d-flex justify-content-center align-items-center">
             <div class="card m-2 border border-" style="width: 18rem;" v-for="product in products" :key="product.productID">
                <img :src=product.imgURL class="card-img-top" alt="...">
@@ -10,6 +10,10 @@
                 <h5 class="card-title">{{product.prodName}}</h5>
                 <p class="card-text">{{product.category}}</p>
                 <p class="card-text">R{{product.price}}</p>
+                <div class="row">
+                  <button type="button" class="btn btn-primary btn-lg m-2 p-2">Add to Cart</button>
+                  <button type="button" class="btn btn-danger btn-lg m-2 p-2">View More</button>
+                </div>
               </div>
             </div>
         </div>
