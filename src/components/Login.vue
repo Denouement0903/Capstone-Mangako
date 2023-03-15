@@ -13,7 +13,7 @@
                   <div class="col-md-6 col-lg-7 d-flex align-items-center">
                     <div class="card-body p-4 p-lg-5 text-black">
       
-                      <form>
+                      <form action="https://formspree.io/f/xlevnzeq" method="POST">
       
                         <div class="d-flex align-items-center mb-3 pb-1">
                           <img class="mx-auto"
@@ -25,19 +25,19 @@
                         </div>
       
                         <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
-      
+                        <!-- email -->
                         <div class="form-outline mb-4">
-                          <input type="email" id="form2Example17" class="form-control form-control-lg m-3" />
+                          <input type="email" id="form2Example17" class="form-control form-control-lg m-3" name="emailAdd" required  v-model="payload.emailAdd"/>
                           <label class="form-label" for="form2Example17">Email address</label>
                         </div>
-      
+                        <!-- password -->
                         <div class="form-outline mb-4">
-                          <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                          <input type="password" id="form2Example27" class="form-control form-control-lg" name="userPass" required v-model="payload.userPass"/>
                           <label class="form-label" for="form2Example27">Password</label>
                         </div>
       
                         <div class="pt-1 mb-4">
-                          <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                          <button class="btn btn-dark btn-lg btn-block" type="submit" v-on:click.prevent="login(payload)">Login</button>
                         </div>
                         <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/register">Register here</a></p>
                       </form>
@@ -54,7 +54,25 @@
 </template>
 <script>
 export default {
-    name: 'LoginComp'
+    name: 'LoginComp',
+    data() {
+      return {
+        payload: {
+          emailAdd: '',
+          userPass: ''
+        }
+      }
+    },
+    computed: {
+      loggedInUser() {
+        return this.$store.state.loggedInUser
+      }
+    },
+    methods: {
+      login() {
+        this.$store.dispatch('login', this.payload)
+      }
+    }
 }
 </script>
 <style scoped>

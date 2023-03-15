@@ -11,6 +11,7 @@ export default createStore({
     product: null,
     message: null,
     loader: true,
+    loggedInUser: null
   },
   mutations: {
     setUsers(state, values) {
@@ -46,6 +47,9 @@ export default createStore({
       }
       state.asc =!state.asc
     },
+    setLoggedInUser(state, values) {
+      state.message = values
+    }
   },
   actions: {
     async login(context, payload){

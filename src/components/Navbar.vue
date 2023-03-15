@@ -49,6 +49,7 @@
           <!-- Right elements -->
           <div class="d-flex align-items-center">
             <!-- Icon -->
+            <router-link class="nav-link m-3" to="/profile"><i class="fa-solid fa-user"></i></router-link>
             <router-link class="nav-link m-3" to="/cart"><i class="fa-solid fa-cart-shopping"></i></router-link>
             <router-link class="nav-link" to="/login">Login</router-link>
               <router-link class="nav-link m-3" to="/register">Register</router-link>
