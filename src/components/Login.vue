@@ -1,8 +1,8 @@
 <template lang="">
     <div>
       <section>
-        <div class="container py-5">
-          <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="container py-5 my-auto">
+          <div class="row d-flex justify-content-center align-items-center">
             <div class="col col-xl-10">
               <div class="card" style="border-radius: 1rem;">
                 <div class="row g-0">
@@ -27,7 +27,7 @@
                         <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
       
                         <div class="form-outline mb-4">
-                          <input type="email" id="form2Example17" class="form-control form-control-lg" />
+                          <input type="email" id="form2Example17" class="form-control form-control-lg m-3" />
                           <label class="form-label" for="form2Example17">Email address</label>
                         </div>
       
