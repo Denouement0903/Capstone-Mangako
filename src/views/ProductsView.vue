@@ -42,7 +42,7 @@
                 <p class="card-text">R{{product.price}}</p>
                 <div class="row">
                   <button type="button" class="btn btn-primary btn-lg m-2 p-2">Add to Cart</button>
-                  <button type="button" class="btn btn-danger btn-lg m-2 p-2">View More</button>
+                  <button type="button" class="btn btn-danger btn-lg m-2 p-2"><router-link :to="{ name: 'singleProduct', params: { productId: product.productID } }">View Product</router-link></button>
                 </div>
               </div>
             </div>
