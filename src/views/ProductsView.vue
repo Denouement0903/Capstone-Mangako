@@ -2,9 +2,39 @@
     <div class="products">
       <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInRightBig">Products</h1>
       <LoaderComp v-if="!products"/>
+      <div class="row">
+        <div class="filter col-4">
+          <div class="dropdown">
+            Filter By
+            <button id="filter dropdownMenuButton2" @click="sortCategory" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Genre
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+              <li>Action Adventure</li>
+              <li>Samurai</li>
+              <li>Sci-Fi</li>
+              <li>Thiller</li>
+              <li>Gore</li>
+              <li>Demi-Humans</li>
+              <li>Action</li>
+              <li>Comedy</li>
+              <li>Zombies</li>
+              <li>Horror</li>
+
+            </ul>
+          </div>
+      </div>
+      <div class="sort col-4">
+        Sort By
+        <button id="sort" @click="sortPrice" class=" btn btn-secondary"><i class="bi bi-arrow-down"></i>Price<i class="bi bi-arrow-up"></i></button>
+      </div>
+      <div class="search col-4">
+        <input class="filter-input rounded-3" id="search" v-model="searching" type="text" placeholder="Search">
+    </div>
+      </div>
       <div class="container-fluid p-5 mx-auto">
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="card m-2 border border-" style="width: 18rem;" v-for="product in products" :key="product.productID">
+        <div class="row d-flex justify-content-center align-items-center" v-if="filtering">
+            <div class="card m-2" style="width: 18rem;" v-for="product in filtering" :key="product.productID">
                <img :src=product.imgURL class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">{{product.prodName}}</h5>
@@ -30,6 +60,12 @@
     components: {
       LoaderComp
     },
+    data(){
+        return {
+            loader : true,
+            searching: ''
+        }
+    },
     setup() {
     const store = useStore();
     const products = computed(() => store.state.products);
@@ -38,16 +74,48 @@
 
     return {
       products
-    };
+    },
+    {
+            sortBy: 'name',
+            filterBy: 'all',
+            searchQuery:'',
+            categories :['Action Adventure', 'Samurai', 'Sci-Fi',
+            'Thriller', 'Gore', 'Demi-Humans', 
+            'Action', 'Zombies', 'Comedy', 'Horror']
+      }
   },
+  computed: {
+    products() {
+            return this.$store.state.products;
+        },
+        filtering() {
+            if(this.searching.trim().length > 0){
+                return this.products.filter((name)=> name.prodName.toLowerCase().includes(this.searching.trim()))
+            }
+            return this.products
+        }
+    },
+    methods: {
+      sortPrice() {
+            this.$store.commit("sortProductsPrice")
+        }  
     }
+  }
   </script>
   <style scoped>
     h5, p {
       color: black
     }
     img {
-      height: 350px;
+      height: 300px;
+    }
+  .card{
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  }
+    .card:hover{
+      transform: scale(1.05);
+      box-shadow: 0px 10px 10px 10px rgb(0, 0, 0), 0 4px 8px rgba(0,0,0,.06);
     }
 
   </style>

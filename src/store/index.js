@@ -9,8 +9,8 @@ export default createStore({
     user: null,
     products: null,
     product: null,
-    message: null
-    // showSpinner: true,
+    message: null,
+    loader: true,
   },
   mutations: {
     setUsers(state, values) {
@@ -36,6 +36,15 @@ export default createStore({
     },
     clearUser(state) {
       state.user = null
+    },
+    sortProductsPrice: (state) => {
+      state.products.sort((a, b)=> {
+        return a.price - b.price;
+      })
+      if(!state.asc) {
+        state.products.reverse()
+      }
+      state.asc =!state.asc
     },
   },
   actions: {

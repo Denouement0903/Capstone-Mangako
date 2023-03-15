@@ -1,15 +1,15 @@
 <template>
     <div>
-        <CartComp/>
+        <CheckoutComp/>
     </div>
 </template>
   
 <script>
-import CartComp from '../components/Cart.vue'
+import CheckoutComp from '../components/Checkout.vue'
 export default {
   name: 'CartView',
   components: {
-    CartComp
+    CheckoutComp
   }
 }
 </script>
