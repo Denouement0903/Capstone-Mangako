@@ -25,10 +25,10 @@ export default createStore({
       state.products = values
     },
     setProduct(state, value) {
-      state.products = value
+      state.product = value
     },
-    setSpinner(state, value) {
-      state.showSpinner = value
+    setLoader(state, value) {
+      state.showLoader = value
     },
     setMessage(state, value) {
       state.message = value
@@ -117,6 +117,14 @@ export default createStore({
         context.commit('setMessage', error.message);
         console.log(response);
       }
+    },
+    async fetchProductByID(context, productID){
+      const res = await axios.get(`${backendLink}product/${productID}`);
+      const {err,results} = await res.data;
+      if(results){
+        context.commit('setProduct', results);
+        context.commit('setLoader', false);
+      } else context.commit('setMessage', err);
     },
   }
 })

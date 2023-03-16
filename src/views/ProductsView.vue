@@ -56,59 +56,62 @@
   import LoaderComp from '@/components/Loader.vue';
   import { computed } from 'vue';
   import { useStore } from 'vuex';
+
   export default {
     name: 'ProductsView',
     components: {
       LoaderComp
     },
-    data(){
-        return {
-            loader : true,
-            searching: ''
-        }
+    data() {
+      return {
+        loader: true,
+        searching: ''
+      }
     },
     setup() {
-    const store = useStore();
-    const product = computed(() => store.state.products);
+      const store = useStore();
+      const product = computed(() => store.state.products);
 
-    store.dispatch('fetchProducts');
+      store.dispatch('fetchProducts');
 
-    return {
-      product,
-      addToProduct() {
-        store.dispatch('addToProduct', product.value);
+      function storeProductID(product) {
+        localStorage.setItem('productID', product.productID);
       }
+
+      return {
+        product,
+        storeProductID,
+        // addToProduct() {
+        //   store.dispatch('addToProduct', product.value);
+        // },
+        sortBy: 'name',
+        filterBy: 'all',
+        searchQuery: '',
+        categories: ['Action Adventure', 'Samurai', 'Sci-Fi', 'Thriller', 'Gore', 'Demi-Humans', 'Action', 'Zombies', 'Comedy', 'Horror']
+      };
     },
-    {
-            sortBy: 'name',
-            filterBy: 'all',
-            searchQuery: '',
-            categories : ['Action Adventure', 'Samurai', 'Sci-Fi',
-            'Thriller', 'Gore', 'Demi-Humans', 
-            'Action', 'Zombies', 'Comedy', 'Horror']
-      }
-  },
-  computed: {
-    products() {
-            return this.$store.state.products;
-        },
-        filtering() {
-            if(this.searching.trim().length > 0){
-                return this.products.filter((name)=> name.prodName.toLowerCase().includes(this.searching.trim()))
-            }
-            return this.products
+    computed: {
+      products() {
+        return this.$store.state.products;
+      },
+      filtering() {
+        if (this.searching.trim().length > 0) {
+          return this.products.filter((name) => name.prodName.toLowerCase().includes(this.searching.trim()))
         }
+        return this.products
+      }
     },
     methods: {
       sortPrice() {
-            this.$store.commit("sortProductsPrice")
-        },
-          sortCategory(categories) {
-          this.$store.commit('filtering', categories);
-        },
+        this.$store.commit("sortProductsPrice")
+      },
+      sortCategory(categories) {
+        this.$store.commit('filtering', categories);
+      },
     }
   }
-  </script>
+</script>
+
   <style scoped>
   .dropdown .dropdown.dropdown-item.disabled {
     color: #adb5bd;

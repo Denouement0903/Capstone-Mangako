@@ -39,7 +39,7 @@
                         </div>
       
                         <div class="pt-1 mb-4">
-                          <button class="btn btn-dark btn-lg btn-block" type="submit" v-on:click.prevent="login(payload)">Login</button>
+                          <button class="btn btn-dark btn-lg btn-block" type="submit" v-on:click.prevent="login(payload)" >Login</button>
                         </div>
                         <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/register">Register here</a></p>
                       </form>
@@ -73,7 +73,7 @@ export default {
     methods: {
       login() {
         this.$store.dispatch('login', this.payload)
-      }
+      },
     }
 }
 </script>

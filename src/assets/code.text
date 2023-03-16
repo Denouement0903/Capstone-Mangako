@@ -119,3 +119,12 @@
     "userPass": "Deno12345"
 
 }
+
+
+
+@click.prevent="homePage" used on submit to redirect home
+    methods: {
+     homePage() {
+         this.$router.push('/');
+     }
+    }

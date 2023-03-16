@@ -34,7 +34,7 @@ export default {
     const store = useStore();
     const product = computed(() => store.state.products.find(p => p.id === props.productID));
 
-    store.dispatch('fetchProducts');
+    store.dispatch('fetchProductByID');
 
     return {
       product
