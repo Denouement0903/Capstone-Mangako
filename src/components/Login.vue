@@ -1,5 +1,7 @@
 <template lang="">
     <div>
+      <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInLeftBig">Login</h1>
+
       <section>
         <div class="container py-5 my-auto">
           <div class="row d-flex justify-content-center align-items-center">

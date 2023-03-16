@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInLeftBig">Cart</h1>
+        <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInRightBig">Cart</h1>
         <table class="table table-bordered border-danger table-hover bg-white opacity-75">
             <thead>
               <tr>

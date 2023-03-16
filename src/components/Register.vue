@@ -1,5 +1,7 @@
 <template lang="">
     <div>
+      <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInRightBig">Register</h1>
+
       <section class="vh-100 w-75 mx-auto my-5">
         <div class="container h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">

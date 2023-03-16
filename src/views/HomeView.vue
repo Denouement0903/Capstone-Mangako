@@ -5,6 +5,7 @@
     <h3 class="display-5 mx-5 my-5 text-center">Preview Our Products...</h3>
    <div class="container-fluid">
 	<div class="row">
+		<h2 class="mx-2 animate__animated animate__heartBeat">Hover Over the cover...</h2>
 		<div class="col-5">
 			<div class="book w-25 h-50 mx-auto">
 				<div class="book-cover">
@@ -168,7 +169,7 @@ h3 {
   -webkit-text-fill-color: transparent;
   background-repeat: no-repeat;
   background-size: 80%;
-  animation: shine 14s linear infinite;
+  animation: shine 4s linear infinite;
   position: relative;
 }
 

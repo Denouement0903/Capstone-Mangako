@@ -11,7 +11,8 @@ export default createStore({
     product: null,
     message: null,
     loader: true,
-    loggedInUser: null
+    loggedInUser: null,
+    category: null
   },
   mutations: {
     setUsers(state, values) {
@@ -49,8 +50,11 @@ export default createStore({
     },
     setLoggedInUser(state, values) {
       state.message = values
-    }
-  },
+    },
+    setFilteredProducts(state, category) {
+      state.selectedCategory = category;
+  }
+},
   actions: {
     async login(context, payload){
       const res = await axios.post(`${backendLink}login`, payload);
@@ -113,6 +117,6 @@ export default createStore({
         context.commit('setMessage', error.message);
         console.log(response);
       }
-    }
+    },
   }
 })

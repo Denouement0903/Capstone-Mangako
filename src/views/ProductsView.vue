@@ -6,21 +6,20 @@
         <div class="filter col-4">
           <div class="dropdown">
             Filter By
-            <button id="filter dropdownMenuButton2" @click="sortCategory" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button id="filter dropdownMenuButton2" @click="sortCategory()" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Genre
             </button>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-              <li>Action Adventure</li>
-              <li>Samurai</li>
-              <li>Sci-Fi</li>
-              <li>Thiller</li>
-              <li>Gore</li>
-              <li>Demi-Humans</li>
-              <li>Action</li>
-              <li>Comedy</li>
-              <li>Zombies</li>
-              <li>Horror</li>
-
+              <li class="dropdown-item" @click="sortCategory('Action Adventure')">Action Adventure</li>
+              <li class="dropdown-item" @click="sortCategory('Samurai')">Samurai</li>
+              <li class="dropdown-item" @click="sortCategory('Sci-Fi')">Sci-Fi</li>
+              <li class="dropdown-item" @click="sortCategory('Thriller')">Thriller</li>
+              <li class="dropdown-item" @click="sortCategory('Gore')">Gore</li>
+              <li class="dropdown-item" @click="sortCategory('Demi-Humans')">Demi-Humans</li>
+              <li class="dropdown-item" @click="sortCategory('Action')">Action</li>
+              <li class="dropdown-item" @click="sortCategory('Comedy')">Comedy</li>
+              <li class="dropdown-item" @click="sortCategory('Zombies')">Zombies</li>
+              <li class="dropdown-item" @click="sortCategory('Horror')">Horror</li>
             </ul>
           </div>
       </div>
@@ -42,7 +41,9 @@
                 <p class="card-text">R{{product.price}}</p>
                 <div class="row">
                   <button type="button" class="btn btn-primary btn-lg m-2 p-2">Add to Cart</button>
-                  <button type="button" class="btn btn-danger btn-lg m-2 p-2"><router-link :to="{ name: 'singleProduct', params: { productId: product.productID } }">View Product</router-link></button>
+                  <button type="button" class="btn btn-danger btn-lg m-2 p-2"  @click="addToProduct">
+                    <router-link :to="{ name: 'singleProduct', params: { productID: product.productID } }">
+                      View Product</router-link></button>
                 </div>
               </div>
             </div>
@@ -68,18 +69,21 @@
     },
     setup() {
     const store = useStore();
-    const products = computed(() => store.state.products);
+    const product = computed(() => store.state.products);
 
     store.dispatch('fetchProducts');
 
     return {
-      products
+      product,
+      addToProduct() {
+        store.dispatch('addToProduct', product.value);
+      }
     },
     {
             sortBy: 'name',
             filterBy: 'all',
-            searchQuery:'',
-            categories :['Action Adventure', 'Samurai', 'Sci-Fi',
+            searchQuery: '',
+            categories : ['Action Adventure', 'Samurai', 'Sci-Fi',
             'Thriller', 'Gore', 'Demi-Humans', 
             'Action', 'Zombies', 'Comedy', 'Horror']
       }
@@ -98,11 +102,18 @@
     methods: {
       sortPrice() {
             this.$store.commit("sortProductsPrice")
-        }  
+        },
+          sortCategory(categories) {
+          this.$store.commit('filtering', categories);
+        },
     }
   }
   </script>
   <style scoped>
+  .dropdown .dropdown.dropdown-item.disabled {
+    color: #adb5bd;
+    pointer-events: auto;
+  }
     h5, p {
       color: black
     }
