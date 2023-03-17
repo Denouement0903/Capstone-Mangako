@@ -1,6 +1,6 @@
 <template>
   <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-black opacity-75 fixed-top">
+      <nav class="navbar navbar-expand-lg bg-dark opacity-75 fixed-top">
         <!-- Container wrapper -->
         <div class="container-fluid">
           <!-- Toggle button -->

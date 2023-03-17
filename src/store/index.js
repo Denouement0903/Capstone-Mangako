@@ -39,6 +39,12 @@ export default createStore({
     clearUser(state) {
       state.user = null
     },
+    clearProducts(state) {
+      state.products = null
+    },
+    clearProduct(state) {
+      state.product = null
+    },
     sortProductsPrice: (state) => {
       state.products.sort((a, b)=> {
         return a.price - b.price;
@@ -76,7 +82,7 @@ export default createStore({
         context.commit('setMessage', err);
       }
     },
-    async adminGet({commit}, error){
+    async adminGetUsers({commit}, error){
       if(error) {
         console.error(error);
       } else{
@@ -126,5 +132,36 @@ export default createStore({
         context.commit('setLoader', false);
       } else context.commit('setMessage', err);
     },
+    async addProduct(context, payload) {
+      let res = await axios.post(`${backendLink}product/`, payload);
+      let {msg, err}  = await res.data;
+      if(msg) {
+        context.commit('setMessage', msg)
+      }
+      if(err) {
+        context.commit('setMessage', err)
+      }
+    },
+    async updateProductByID(context, payload) {
+      const res = 
+      await axios.put(`${backendLink}product/${payload.productID}`, payload);
+      const {msg, err} = await res.data;
+      if(msg) {
+          context.dispatch('fetchProducts');
+      }
+      if(err) {
+          context.commit('setMessage', msg || err)
+      }
+    },
+    async deleteProductByID(context, productID) {
+      const res = await axios.delete(`${backendLink}product/${productID}`);
+      const {err, msg} = await res.data;
+      if(msg) {
+          context.dispatch('fetchProducts');
+      }
+      if(err) {
+          context.commit('setMessage', err);
+      }
+    }
   }
 })

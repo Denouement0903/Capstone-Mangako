@@ -8,10 +8,6 @@
                 <div class="col-md-4">
                     <div class="profile-img">
                         <img src="https://i.postimg.cc/3NBHqZ4x/dfkbesy-12deddd4-b46d-4167-b756-b77abe6496e7-removebg-preview.png" alt=""/>
-                        <div class="file btn btn-lg btn-primary">
-                            Change Photo
-                            <input type="file" name="file"/>
-                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
