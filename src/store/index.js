@@ -80,32 +80,32 @@ export default createStore({
       if(error) {
         console.error(error);
       } else{
-        const { data } = await axios.get('/admin')
-        commit('setItems', data.items);
+        const { data } = await axios.get('/users')
+        commit('setUsers', data.users);
       }
     },
     async adminCreateUser({dispatch}, user, error){
       if(error){
         console.error(error);
       } else {
-        await axios.post('/admin', user) //replace '/admin' with your API endpoint for creating an item
-        dispatch('admin')
+        await axios.post('/user', user)
+        dispatch('user')
       }
     }, 
     async adminUpdateUser({dispatch}, user, error){
       if(error){
         console.error(error);
       } else {
-        await axios.post(`/admin/${user.id}`, user) //replace '/admin' with your API endpoint for creating an item
-        dispatch('admin')
+        await axios.post(`/admin/${user.userID}`, user)
+        dispatch('user')
       }
     }, 
     async adminDeleteUser({dispatch}, user, error){
       if(error){
         console.error(error);
       } else {
-        await axios.delete(`/admin/${user.id}`) //replace '/admin' with your API endpoint for deleting an item
-        dispatch('admin')
+        await axios.delete(`/user/${user.userID}`)
+        dispatch('user')
       }
     },
     async fetchProducts(context) {
@@ -122,7 +122,7 @@ export default createStore({
       const res = await axios.get(`${backendLink}product/${productID}`);
       const {err,results} = await res.data;
       if(results){
-        context.commit('setProduct', results);
+        context.commit('setProduct', results[0]);
         context.commit('setLoader', false);
       } else context.commit('setMessage', err);
     },

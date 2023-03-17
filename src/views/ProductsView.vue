@@ -41,7 +41,7 @@
                 <p class="card-text">R{{product.price}}</p>
                 <div class="row">
                   <button type="button" class="btn btn-primary btn-lg m-2 p-2">Add to Cart</button>
-                  <button type="button" class="btn btn-danger btn-lg m-2 p-2"  @click="addToProduct">
+                  <button type="button" class="btn btn-danger btn-lg m-2 p-2"  @click="useProductID(productID)">
                     <router-link :to="{ name: 'singleProduct', params: { productID: product.productID } }">
                       View Product</router-link></button>
                 </div>
@@ -81,9 +81,9 @@
       return {
         product,
         storeProductID,
-        // addToProduct() {
-        //   store.dispatch('addToProduct', product.value);
-        // },
+        useProductID() {
+          store.dispatch('fetchProductByID', product.value);
+        },
         sortBy: 'name',
         filterBy: 'all',
         searchQuery: '',

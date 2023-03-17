@@ -4,9 +4,9 @@
     <h2 class="display-3 mx-5 my-5 text-center animate__animated animate__fadeInRightBig">Your ONE-STOP Shop for Manga</h2>
     <h3 class="display-5 mx-5 my-5 text-center">Preview Our Products...</h3>
    <div class="container-fluid">
-	<div class="row">
+	<div class="row animate__animated animate__heartBeat">
 		
-		<h2 class="mx-2 animate__animated animate__heartBeat">Hover Over the cover...</h2>
+		<h2 class="mx-2">Hover Over the cover...</h2>
 		<div class="col-5">
 			<div class="book w-25 h-50 mx-auto">
 				<div class="book-cover">

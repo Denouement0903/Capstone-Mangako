@@ -1,14 +1,10 @@
 <template>
   <div>
-    <header>
       <Navbar/>
-    </header>
-    <main>
-      <router-view/>
-    </main>
-    <footer >
+      <div class="container-fluid min-vh-100">
+        <router-view/>
+      </div>
       <FooterComponent/>
-    </footer>
   </div>
 </template>
 
@@ -40,6 +36,7 @@ body{
   background-size: cover;
   object-fit: cover;
   background-attachment: fixed;
+  min-height: 100vh;
 }
 
 nav {

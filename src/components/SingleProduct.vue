@@ -1,16 +1,20 @@
 <template>
   <div>
-    <div class="card mb-3" style="max-width: 540px;" v-if="product">
+    <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInRightBig">Single Product</h1>
+    <LoaderComp v-if="!product"/>
+    <div class="card mb-3 w-75 bg-dark mx-auto" v-if="product">
       <div class="row g-0">
-        <div class="col-md-4">
-          <img :src="product.imgURL" class="img-fluid rounded-start" alt="...">
+        <div class="col-md-6">
+          <img :src="product.imgURL" class="img-fluid m-1 rounded-start" alt="...">
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
           <div class="card-body">
+            <img class="icon" height="50" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACSElEQVR4nO2az04UQRDGfycXDxpMFLzJ0QOc8CbeDMREI0f+PAOB8BaABw0mhiuPIKzKGxDjWdg/J8E1EPAsQijTSZlslpmdmZ7umR7Cl3zJbHantr5UT3VV9cANri/uAdPAGlAH9oHfwJnSXO/pd+Y3r4FBAkENmAd2gAtAMtLc8xmYU1uF4zawDPy0cD6Oh8ASMFCUiBdA26GAXraAKZ8CTOjfeRTQy02NvFMMA98KFCHKr8CQKxEjGm4piU31IRceaBqVktkGHtqKGChpOUmfZWaVoj8E4Lz0cN0mxUqgnEwrwoSvEYDDEsNW2k1zOQBnJYGLaaJxGICjksCDpAd/PucfHAHjwEQBYmb7CdnJKWJU7TwpQMinfv3EhQMRo/rZt5Bz4G6UkGlLg8fAmNp4DPwqQIQoX0YJeVORSEgXV6OE1CsUCVF+jBLSrFAkRGkK2is4rVAkpMuXKzhLebNJrb7xNKUvf0IX8iyPENul1QltaTUq+LDv+Ui/nVDS75qFobIjs+KzROmUXaIMVqxo/BtXNBp8qVAZv00fzOU0fqQi0u4DeThzXVrdWyRgKQBHJYELSSL+RyWEManEsJll4jgVgMMSwUvgORnxPgDHpYdvsUBNB8cSCHfTPOBxuB/QscIwOTGSsQ12zQbwCEcYKmmZ7ephk5fD0MuCRGz4Pnuf9LzU9m1SrC1qOto/cCjgh+7YpbwBUdOpeF1nsVmdP9cqdiZPanUN0xu80jHmlvbTJ10v1Zjr79qermhTdMe5FzcgDPwDzOEXEz5EkHIAAAAASUVORK5CYII=">
             <h3 class="card-title">{{ product.prodName }}</h3>
-            <h4 class="card-text">R{{ product.price }}</h4>
-            <p class="card-text">{{ product.category }}</p>
-            <h6 class="card-text">{{ product.prodDescription }}</h6>
+            <h4 class="card-text"><span class="text-danger">Price: </span> <br> R{{ product.price }}</h4>
+            <h5 class="card-text"><span class="text-danger">Genre: </span> <br> {{ product.category }}</h5>
+            <h6 class="card-text"><span class="text-danger"> Description: </span> <br> {{ product.prodDescription }}</h6>
+            <button type="button" class="btn btn-primary btn-lg m-2 p-2">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -19,30 +23,33 @@
 </template>
 
 <script>
+import LoaderComp from './Loader.vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 export default {
   name: 'SingleProductComp',
-  props: {
-    productID: {
-      type: Number,
-      required: true
-    }
+  components: {
+    LoaderComp
   },
-  setup(props) {
+  setup() {
     const store = useStore();
-    const product = computed(() => store.state.products.find(p => p.id === props.productID));
-
-    store.dispatch('fetchProductByID');
-
+    const product = computed(() => store.state.product);
     return {
       product
     }
+  },
+  mounted() {
+    this.$store.dispatch('fetchProductByID', this.$route.params.productID)
   }
 };
 </script>
 
 <style scoped>
-
+.img-fluid {
+  height: 700px;
+}
+.icon{
+  margin-left: 90%;
+}
 </style>

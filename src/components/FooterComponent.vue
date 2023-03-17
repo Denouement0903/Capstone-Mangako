@@ -24,14 +24,19 @@
                     </a>
                 </div>
             </div>
-        <a href="/">2023 Copyright &copy;  Deno Rautenbach</a>
+        <a href="/">{{year}} Copyright &copy;  Deno Rautenbach</a>
         </footer>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'FooterComponent'
+    name: 'FooterComponent',
+    data() {
+        return {
+            year: new Date().getFullYear()
+        }
+    }
 }
 </script>
 <style scoped>
