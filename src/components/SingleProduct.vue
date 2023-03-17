@@ -5,7 +5,7 @@
     <div class="card mb-3 w-75 bg-dark mx-auto" v-if="product">
       <div class="row g-0">
         <div class="col-md-6">
-          <img :src="product.imgURL" class="img-fluid m-1 rounded-start" alt="...">
+          <img loading="lazy" :src="product.imgURL" class="img-fluid m-1 rounded-start" alt="...">
         </div>
         <div class="col-md-6">
           <div class="card-body">

@@ -9,7 +9,7 @@
               <div class="card bg-dark" style="border-radius: 1rem;">
                 <div class="row g-0">
                   <div class="col-md-6 col-lg-5 d-none d-md-block">
-                    <img src="https://i.postimg.cc/NGrzS4pK/icegif-1323.gif"
+                    <img loading="lazy" src="https://i.postimg.cc/NGrzS4pK/icegif-1323.gif"
                       alt="login form" class="img-fluid m-5 opacity-75 rounded-4" style="border-radius: 1rem 0 0 1rem;" />
                   </div>
                   <div class="col-md-6 col-lg-7 d-flex align-items-center">

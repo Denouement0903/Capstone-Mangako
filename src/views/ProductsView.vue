@@ -34,7 +34,7 @@
       <div class="container-fluid p-5 mx-auto">
         <div class="row d-flex justify-content-center align-items-center" v-if="filtering">
             <div class="card m-2" style="width: 18rem;" v-for="product in filtering" :key="product.productID">
-               <img :src=product.imgURL class="card-img-top" alt="...">
+               <img loading="lazy" :src=product.imgURL class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">{{product.prodName}}</h5>
                 <p class="card-text">{{product.category}}</p>

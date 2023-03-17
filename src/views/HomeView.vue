@@ -68,9 +68,9 @@ p {
 .book-cover {
 	background-image: url('https://i.postimg.cc/FFLvzhDR/deathnote-cover-for-download-by-deathnote-club-d1xmeas-fullview.jpg');
 	background-repeat: no-repeat;
-  background-size: cover;
-  object-fit: cover;
-  background-attachment: fixed;
+	background-size: cover;
+	object-fit: cover;
+	background-attachment: fixed;
 	display: flex;
 	justify-content: center;
 	align-items: center;

@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-img">
-                        <img src="https://i.postimg.cc/3NBHqZ4x/dfkbesy-12deddd4-b46d-4167-b756-b77abe6496e7-removebg-preview.png" alt=""/>
+                        <img loading="lazy" src="https://i.postimg.cc/3NBHqZ4x/dfkbesy-12deddd4-b46d-4167-b756-b77abe6496e7-removebg-preview.png" alt=""/>
                     </div>
                 </div>
                 <div class="col-md-6">

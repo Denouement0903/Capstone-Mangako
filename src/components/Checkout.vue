@@ -38,7 +38,7 @@
           <!-- Checkout -->
           <div class="row">
             <div class="col">
-              <!-- <img src="https://i.postimg.cc/qMZnm1gm/jojo-s-bizarre-adventure-part-1-phantom-blood-vol-1.jpg" alt=""> -->
+              <!-- <img loading="lazy" src="https://i.postimg.cc/qMZnm1gm/jojo-s-bizarre-adventure-part-1-phantom-blood-vol-1.jpg" alt=""> -->
             </div>
             <div class="col">
               <div class="container-fluid">
@@ -50,9 +50,9 @@
                       
                         <div class="row justify-content-center mrow">
                           <div class="col-12">
-                            <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png" width="35px" height="35px"/>
-                            <img src="https://img.icons8.com/color/48/000000/visa.png" width="35px" height="35px"/>
-                            <img src="https://img.icons8.com/color/48/000000/paypal.png" width="35px" height="35px"/>
+                            <img loading="lazy" src="https://img.icons8.com/color/48/000000/mastercard-logo.png" width="35px" height="35px"/>
+                            <img loading="lazy" src="https://img.icons8.com/color/48/000000/visa.png" width="35px" height="35px"/>
+                            <img loading="lazy" src="https://img.icons8.com/color/48/000000/paypal.png" width="35px" height="35px"/>
                           </div>
                         </div>
                         <form class="form-card">
