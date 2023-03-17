@@ -10,42 +10,104 @@
 </head>
 <body>
     <main>
-      <header class="display-1 d-flex justify-content-center">HOME</header>
-        <table class="table table-hover table-bordered border-primary">
-            <thead>
-              <tr>
-                <th scope="col">Route</th>
-                <th scope="col">URL</th>
-                <th scope="col">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Home</th>
-                <td>/</td>
-                <td>Shows Home with table</td>
-              </tr>
-              <tr>
-                <th scope="row">All Users</th>
-                <td>/users</td>
-                <td>Retrieves all Users</td>
-              </tr>
-              <tr>
-                <th scope="row">One User</th>
-                <td>/users/:userID</td>
-                <td>Retrieves a single user by ID</td>
-              </tr>
-              <tr>
-                <th scope="row">All Products</th>
-                <td>/products</td>
-                <td>Retrieves all Products</td>
-              </tr>
-                <th scope="row">One Product</th>
-                <td>/products/:productID</td>
-                <td>Retrieves a single product</td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="container">
+        <h3 class="display-3 text-center">Home Route</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Method</th>
+              <th scope="col">Path</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">GET</td>
+              <td>/</td>
+              <td>Home Page</td>
+            </tr>
+          </tbody>
+        </table>
+  
+        <h3 class="display-3 text-center">User Routes</h3>
+        <table class="table table-striped">
+          <thead>
+            <th scope="col">Method</th>
+            <th scope="col">Path</th>
+            <th scope="col">Description</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">POST</td>
+              <td>/register</td>
+              <td>Register a new user.</td>
+            </tr>
+            <tr>
+              <td scope="row">POST</td>
+              <td>/login</td>
+              <td>Login a user that's already registered.</td>
+            </tr>
+            <tr>
+              <td scope="row">GET</td>
+              <td>/users</td>
+              <td>To get all the users that are registered</td>
+            </tr>
+            <tr>
+              <td scope="row">GET</td>
+              <td>/user/id</td>
+              <td>Get a user by using the unique id.</td>
+            </tr>
+            <tr>
+              <td scope="row">DELETE</td>
+              <td>/user/:id</td>
+              <td>Delete a product by using it's unique id.</td>
+            </tr>
+            <tr>
+              <td scope="row">PUT</td>
+              <td>/user/:id</td>
+              <td>Update an existing user profile by using the the id.</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 class="display-3 text-center">Products routes</h3>
+  
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Method</th>
+              <th scope="col">Path</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td scope="row">GET</td>
+              <td>/products</td>
+              <td>Get all the products.</td>
+            </tr>
+            <tr>
+              <td scope="row">GET</td>
+              <td>/product/:id</td>
+              <td>Get a single product by using the unique id.</td>
+            </tr>
+            <tr>
+              <td scope="row">POST</td>
+              <td>/product</td>
+              <td>Add a product to the API.</td>
+            </tr>
+            <tr>
+              <td scope="row">PUT</td>
+              <td>/product/:id</td>
+              <td>Update a product by making use of the unique id.</td>
+            </tr>
+            <tr>
+              <td scope="row">DELETE</td>
+              <td>/product/:id</td>
+              <td>Delete a single product by using the id.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </main>
 </body>
 </html>
