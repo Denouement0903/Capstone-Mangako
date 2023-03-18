@@ -6,7 +6,7 @@
    <div class="container-fluid">
 	<div class="row animate__animated animate__heartBeat">
 		
-		<h2 class="mx-2">Hover Over the cover...</h2>
+		<h3 class="mx-2">Click the cover...</h3>
 		<div class="col-5">
 			<div class="book w-25 h-50 mx-auto">
 				<div class="book-cover">

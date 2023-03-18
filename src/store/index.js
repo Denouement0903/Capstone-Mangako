@@ -1,7 +1,8 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 
-const backendLink = "https://mangako.onrender.com/"
+const backendLink = "http://localhost:2021/"
+// const backendLink = "https://mangako.onrender.com/"
 
 export default createStore({
   state: {
