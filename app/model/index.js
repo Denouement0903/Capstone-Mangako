@@ -94,7 +94,8 @@ class User {
                         res.cookie('LegitUser',
                         jwToken, {
                             maxAge: 3600000,
-                            httpOnly: true
+                            httpOnly: true,
+                            path: '/'
                         })
                         if(cResult) {
                             res.status(200).json({
@@ -165,7 +166,8 @@ class User {
                 // The duration is in milliseconds.
                 res.cookie("LegitUser", jwToken, {
                     maxAge: 3600000,
-                    httpOnly: true
+                    httpOnly: true,
+                    path: '/'
                 });
                 res.status(200).json({msg: "A user record was saved."})
             }
