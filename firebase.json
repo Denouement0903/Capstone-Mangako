@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "site": "mangako-deno-rautenbach",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
+
