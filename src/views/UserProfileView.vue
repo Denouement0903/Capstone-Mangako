@@ -1,6 +1,6 @@
 <template>
     <div class="userProfile">
-        <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInLeftBig">User Profile</h1>
+        <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInRightBig">User Profile</h1>
 
       <div class="container emp-profile">
         <form method="post">

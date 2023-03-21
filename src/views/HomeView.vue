@@ -4,10 +4,10 @@
     <h2 class="display-3 mx-5 my-5 text-center animate__animated animate__fadeInRightBig">Your ONE-STOP Shop for Manga</h2>
     <h3 class="display-5 mx-5 my-5 text-center">Preview Our Products...</h3>
    <div class="container-fluid">
-	<div class="row animate__animated animate__heartBeat">
+	<div class="row">
 		
 		<h3 class="mx-2">Click the cover...</h3>
-		<div class="col-5">
+		<div class="col-md-5">
 			<div class="book w-25 h-50 mx-auto">
 				<div class="book-cover">
 				</div>
@@ -15,10 +15,10 @@
 				</div>	
 			</div>
 		</div>
-		<div class="col-7">
+		<div class="col-md-7">
 			<h4>Death Note Volume 1</h4>
 			<p>In Tokyo, a disaffected high school student named Light Yagami finds the "Death Note", a mysterious black notebook that can kill anyone as long as the user knows both the target's name and face. Initially terrified of its god-like power, Light considers the possibilities of the Death Note's abilities and kills high-profile Japanese criminals, then targets international criminals. Five days after discovering the notebook, Light is visited by Ryuk, a "shinigami" and the Death Note's previous owner. Ryuk, invisible to anyone who has not touched the notebook, reveals that he dropped the notebook into the human world out of boredom and is amused by Light's actions</p>
-			<button type="button" class="btn btn-danger btn-lg">Buy now</button>
+			<button type="button" @click.prevent="toSingleView" class="btn btn-danger btn-lg">Buy now</button>
 		</div>
 	</div>
    </div>
@@ -26,8 +26,25 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 export default {
-  name: 'HomeView'
+  name: 'HomeView',
+  methods: {
+    toSingleView() {
+    this.$router.push("/singleProduct/11");
+  },
+},
+  setup() {
+    const store = useStore();
+    const product = computed(() => store.state.product);
+    return {
+      product
+    }
+  },
+  mounted() {
+    this.$store.dispatch('fetchProductByID', this.$route.params.productID)
+  }
 };
 </script>
 <style>

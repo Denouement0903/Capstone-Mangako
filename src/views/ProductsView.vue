@@ -26,19 +26,19 @@
       <div class="sort col-4">
         Sort By
         <button id="sort" @click="sortPrice" class=" btn btn-secondary"><i class="bi bi-arrow-down"></i>Price<i class="bi bi-arrow-up"></i></button>
-      </div>
+        Highest/Lowest</div>
       <div class="search col-4">
         <input class="filter-input rounded-3" id="search" v-model="searching" type="text" placeholder="Search">
     </div>
       </div>
       <div class="container-fluid p-5 mx-auto">
         <div class="row d-flex justify-content-center align-items-center" v-if="filtering">
-            <div class="card m-2" style="width: 18rem;" v-for="product in filtering" :key="product.productID">
+            <div class="col-md-3 card border-danger bg-dark m-2" style="width: 16rem;" v-for="product in filtering" :key="product.productID">
                <img loading="lazy" :src=product.imgURL class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">{{product.prodName}}</h5>
-                <p class="card-text">{{product.category}}</p>
-                <p class="card-text">R{{product.price}}</p>
+                <h5 class="card-title text-light"><span class="text-danger">Title: </span>{{product.prodName}}</h5>
+                <p class="card-text text-light"><span class="text-danger">Genre: </span>{{product.category}}</p>
+                <p class="card-text text-light"><span class="text-danger">Price: </span>R {{product.price}}</p>
                 <div class="row">
                   <button type="button" class="btn btn-primary btn-lg m-2 p-2">Add to Cart</button>
                   <button type="button" class="btn btn-danger btn-lg m-2 p-2"  @click="useProductID(productID)">
@@ -74,13 +74,9 @@
 
       store.dispatch('fetchProducts');
 
-      function storeProductID(product) {
-        localStorage.setItem('productID', product.productID);
-      }
 
       return {
         product,
-        storeProductID,
         useProductID() {
           store.dispatch('fetchProductByID', product.value);
         },
@@ -103,7 +99,7 @@
     },
     methods: {
       sortPrice() {
-        this.$store.commit("sortProductsPrice")
+        this.$store.commit("sortProductsPrice");
       },
       sortCategory(categories) {
         this.$store.commit('filtering', categories);

@@ -1,8 +1,8 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 
-const backendLink = "http://localhost:2021/"
-// const backendLink = "https://mangako.onrender.com/"
+// const backendLink = "http://localhost:2021/"
+const backendLink = "https://mangako.onrender.com/"
 
 export default createStore({
   state: {
@@ -67,7 +67,8 @@ export default createStore({
       const res = await axios.post(`${backendLink}login`, payload);
       const {result, err} = await res.data;
       if (result) {
-        context.commit('setUser', result);
+        context.commit('setUser', result[0]);
+        console.log(result[0]);
       }
       else {
         context.commit('setMessage', err);
@@ -75,9 +76,9 @@ export default createStore({
     },
     async register(context, payload){
       let res = await axios.post(`${backendLink}register`, payload);
-      let {msg, err} = await res.data;
-      if(msg){
-        context.commit('setMessage', msg);
+      let {err, results} = await res.data;
+      if(results){
+        context.commit('setMessage', results);
       }
       else {
         context.commit('setMessage', err);

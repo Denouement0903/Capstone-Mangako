@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="contact">
     <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInLeftBig">Contact</h1>
 
     <!--Section: Contact v.2-->
@@ -8,7 +8,7 @@
 
       <!--Grid column-->
       <div class="col-md-9 mb-md-0 mb-5">
-          <form id="contact-form" name="contact-form" action="mail.php" method="POST" class="w-75 mx-auto">
+          <form action="https://formspree.io/f/xlevnzeq" id="contact-form" name="contact-form" method="POST" class="w-75 mx-auto bg-dark p-4 rounded-3">
 
               <!--Grid row-->
               <div class="row">
@@ -59,18 +59,17 @@
                   </div>
               </div>
               <!--Grid row-->
-
+              <div class="text-center text-md-left">
+                  <a class="btn btn-primary m-3" onclick="document.getElementById('contact-form').submit();">Send</a>
+              </div>
           </form>
 
-          <div class="text-center text-md-left">
-              <a class="btn btn-primary m-3" onclick="document.getElementById('contact-form').submit();">Send</a>
-          </div>
           <div class="status"></div>
       </div>
       <!--Grid column-->
 
       <!--Grid column-->
-      <div class="col-md-3 text-center">
+      <div class="col-md-3 text-center bg-dark opacity-75 p-4 rounded-3">
           <ul class="list-unstyled mb-0">
               <li><i class="fas fa-map-marker-alt fa-2x"></i>
                   <p>02 Tokai Road, Cape Town, 7966 </p>
