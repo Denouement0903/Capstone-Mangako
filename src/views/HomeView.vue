@@ -7,7 +7,7 @@
 	<div class="row">
 		
 		<h3 class="mx-2">Click the cover...</h3>
-		<div class="col-md-5">
+		<div class="col-sm-5 ">
 			<div class="book w-25 h-50 mx-auto">
 				<div class="book-cover">
 				</div>

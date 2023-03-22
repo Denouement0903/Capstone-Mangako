@@ -74,28 +74,6 @@
      </div>
    </div>
  </div>
- 
-
-<!-- ========= Delete Product ======== -->
-<!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content bg-dark">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Product</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 
         <LoaderComp v-if="!products"/>
         <table class="table table-bordered border-danger table-hover bg-white opacity-75">
@@ -130,8 +108,8 @@
                     <i class="fa-solid fa-pen-to-square"></i>
                    </button>
                    <!-- Delete -->
-                   <button type="button" class="btn btn-danger d-flex m-3" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                    <i class="fa-solid fa-trash"></i>
+                   <button type="button" class="btn btn-danger d-flex m-3">
+                    <i class="fa-solid fa-trash" @click="deleteProductByID(product.productID)"></i>
                   </button>                  
                 </td>
             </tr>
@@ -155,6 +133,7 @@ export default {
                 dotsVisible: true,
                 moreVisible: false,
                 btnText: 'More/Less',
+                productID: '',
                 moreText: '',
                 prodName: '',
                 imgURL: '',
@@ -170,6 +149,7 @@ export default {
         const products = computed(() => store.state.products);
 
         let productsInfo = {
+                productID: '',
                 prodName: '',
                 imgURL: '',
                 prodDescription: '',
@@ -185,6 +165,7 @@ export default {
         };
         
         let updatedProductData = {
+                productID: '', 
                 prodName: '',
                 imgURL: '',
                 prodDescription: '',
@@ -194,6 +175,7 @@ export default {
         let updateProductByID = async (productID, updatedProductData) => {
             try {
               const response = await store.dispatch('updateProductByID', { productID, updatedProductData });
+              alert(`Product with ID ${productID} was successfully updated`)
               console.log(`Product with ID ${productID} was successfully updated:`, response);
             } catch (error) {
               console.error(`Error updating product with ID ${productID}:`, error);
@@ -208,6 +190,9 @@ export default {
         }         
     },
     methods: {
+      deleteProductByID(productID) {
+        this.$store.dispatch('deleteProductByID', productID)
+      },
     toggleText(product) {
       product.dotsVisible = !product.dotsVisible;
       product.btnText = product.dotsVisible ? 'More/Less' : 'More/Less';

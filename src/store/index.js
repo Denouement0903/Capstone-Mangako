@@ -2,8 +2,8 @@ import { createStore } from 'vuex'
 import axios from 'axios'
 import { useCookies } from "vue3-cookies"
 const {cookies} = useCookies()
-const backendLink = "http://localhost:3500/"
-// const backendLink = "https://mangako.onrender.com/"
+// const backendLink = "http://localhost:3500/"
+const backendLink = "https://mangako.onrender.com/"
 
 export default createStore({
   state: {

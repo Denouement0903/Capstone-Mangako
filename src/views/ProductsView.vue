@@ -3,7 +3,7 @@
       <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInRightBig">Products</h1>
       <LoaderComp v-if="!products"/>
       <div class="row">
-        <div class="filter col-4">
+        <div class="filter col-sm-4 m-3">
           <div class="dropdown">
             Filter By
             <button id="filter dropdownMenuButton2" @click="sortCategory()" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -23,7 +23,7 @@
             </ul>
           </div>
       </div>
-      <div class="sort col-4">
+      <div class="sort col-sm-4 m-3">
         Sort By
         <button id="sort" @click="sortPrice" class=" btn btn-secondary"><i class="bi bi-arrow-down"></i>Price<i class="bi bi-arrow-up"></i></button>
         Highest/Lowest</div>

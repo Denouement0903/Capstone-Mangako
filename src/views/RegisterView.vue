@@ -3,7 +3,7 @@
       <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInLeftBig">Register</h1>
 
       <section class="w-75 mx-auto my-5">
-        <div class="container h-100">
+        <div class="container-fluid h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-lg-12 col-xl-11">
               <div class="card text-light bg-dark" style="border-radius: 25px;">
@@ -82,7 +82,7 @@
                     <div class=" col-8 col-md-8 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
                       <img src="https://i.postimg.cc/cLp2fvr5/berserk-guts.gif"
-                        class="img-fluid mx-auto rounded-5" alt="Sample image" loading="lazy">
+                        class="img-sm-fluid mx-auto rounded-5 md-sm-auto" alt="Sample image" loading="lazy">
 
                     </div>
                   </div>
@@ -128,5 +128,15 @@ export default {
 }
 </script>
 <style scoped>
-    
+    @media (min-width: 300px) {
+  img {
+    display: none;
+  };
+  .container-fluid{
+    width: 100%
+  };
+  input {
+    width: 50%
+  }
+}
 </style>

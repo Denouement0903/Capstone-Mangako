@@ -37,6 +37,7 @@ body{
   object-fit: cover;
   background-attachment: fixed;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 nav {
