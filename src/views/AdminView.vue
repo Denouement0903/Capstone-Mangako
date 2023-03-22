@@ -40,7 +40,61 @@
 
 
 <!-- ========= Update Product ======== -->
+ 
+ <!-- Modal -->
+ <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content bg-dark">
+       <div class="modal-header">
+         <h1 class="modal-title fs-5" id="exampleModalLabel">Update Product</h1>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <div class="modal-body">
+         <form>
+          <!-- ID -->
+          <input class="form-control mb-1" type="text" name="productID" id="productID" placeholder="Current ID" v-model="updateProductByID.productID" required>
+          <!-- Name -->
+          <input class="form-control mb-1" type="text" name="prodName" id="prodName" placeholder="Edit Name" v-model="updateProductByID.prodName" required>
+          <!-- Desc -->
+          <input class="form-control mb-1" type="text" name="prodDescription" id="prodDescription" placeholder="Edit Description" v-model="updateProductByID.prodDescription" required>
+          <!-- Price -->
+          <input class="form-control mb-1" type="text" name="price" id="price" placeholder="Edit price" v-model="updateProductByID.price" required>
+          <!-- Quantity -->
+          <input class="form-control mb-1" type="text" name="prodQuantity" id="prodQuantity" placeholder="Edit Quantity" v-model="updateProductByID.prodQuantity" required>
+          <!-- Genre/Category -->
+          <input class="form-control mb-1" type="text" name="category" id="category" placeholder="Edit category" v-model="updateProductByID.category" required>
+          <!-- IMG -->
+          <input class="form-control mb-1" type="text" name="imgURL" id="imgURL" placeholder="Edit imgURL" v-model="updateProductByID.imgURL">
+      </form>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-primary"  @click="updateProductByID">Save changes</button>
+       </div>
+     </div>
+   </div>
+ </div>
+ 
 
+<!-- ========= Delete Product ======== -->
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Product</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
         <LoaderComp v-if="!products"/>
@@ -54,6 +108,7 @@
                 <th scope="col">Quantity</th>
                 <th scope="col">Description</th>
                 <th scope="col">Price</th>
+                <th scope="col">Edit/Del</th>
               </tr>
             </thead>
             <tbody v-for="product in products" :key="product">
@@ -69,6 +124,16 @@
                     <span id="more" v-show="product.moreVisible"></span><br>{{ product.moreText }}...
                 </td>
                 <td>{{ product.price }}</td>
+                <td class="d-flex">
+                  <!-- Update -->
+                  <button type="button" class="btn btn-success  m-3 d-flex" data-bs-toggle="modal" data-bs-target="#updateModal">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                   </button>
+                   <!-- Delete -->
+                   <button type="button" class="btn btn-danger d-flex m-3" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>                  
+                </td>
             </tr>
             </tbody>
           </table>
@@ -112,15 +177,33 @@ export default {
                 price: ''
         };
 
+        
         let addProduct = async () =>{
-        await store.dispatch('addProduct', productsInfo);
-        alert('Product Created Successfully')
-        location.reload();   
+          await store.dispatch('addProduct', productsInfo);
+          alert('Product Created Successfully')
+          location.reload();   
+        };
+        
+        let updatedProductData = {
+                prodName: '',
+                imgURL: '',
+                prodDescription: '',
+                prodQuantity: '',
+                price: ''
         }
-
+        let updateProductByID = async (productID, updatedProductData) => {
+            try {
+              const response = await store.dispatch('updateProductByID', { productID, updatedProductData });
+              console.log(`Product with ID ${productID} was successfully updated:`, response);
+            } catch (error) {
+              console.error(`Error updating product with ID ${productID}:`, error);
+            }
+          };
         return{
             productsInfo,
             products,
+            updatedProductData,
+            updateProductByID,
             addProduct
         }         
     },

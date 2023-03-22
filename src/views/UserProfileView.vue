@@ -150,7 +150,8 @@
   
   <script>
   export default {
-    name: 'UserProfileView'
+    name: 'UserProfileView',
+    
   };
   </script>
   <style scoped>

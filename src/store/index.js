@@ -78,16 +78,20 @@ export default createStore({
         context.commit('setMessage', err);
       }
     },
-    async register(context, payload){
-      let res = await axios.post(`${backendLink}register`, payload);
-      let {err, results} = await res.data;
-      if(results){
-        context.commit('setMessage', results);
+    async register(context, payload) {
+      const res = await axios.post(`${backendLink}register`, payload);
+      const { result, err, jwToken } = await res.data;
+      console.log("Token: ", jwToken);
+      console.log("result: ", result);
+      if (result) {
+        context.commit('setUser', result[0]);
+        cookies.set('LegitUser', jwToken);
+        console.log(result[0]);
       }
       else {
         context.commit('setMessage', err);
       }
-    },
+    },    
     async adminGetUsers({commit}, error){
       if(error) {
         console.error(error);
