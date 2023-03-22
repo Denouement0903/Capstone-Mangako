@@ -24,12 +24,13 @@ app.use(
         res.header("Access-Control-Allow-Headers", "*")
         next();
     });
-app.use(route);
+
 app.use(
-    cors(),
     cookieParser(),
-    express.json,
-    express.urlencoded({extended: false})
+    cors(),
+    route,
+    express.json(),
+    express.urlencoded({extended: true})
 )
 
 app.use(errorHandling);
