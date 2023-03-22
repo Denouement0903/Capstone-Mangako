@@ -1,8 +1,9 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
-
-// const backendLink = "http://localhost:2021/"
-const backendLink = "https://mangako.onrender.com/"
+import { useCookies } from "vue3-cookies"
+const {cookies} = useCookies()
+const backendLink = "http://localhost:3500/"
+// const backendLink = "https://mangako.onrender.com/"
 
 export default createStore({
   state: {
@@ -65,9 +66,12 @@ export default createStore({
   actions: {
     async login(context, payload){
       const res = await axios.post(`${backendLink}login`, payload);
-      const {result, err} = await res.data;
+      const {result, err, jwToken} = await res.data;
+      console.log("Token: ", jwToken);
+      console.log("result: ", result);
       if (result) {
         context.commit('setUser', result[0]);
+        cookies.set('LegitUser', jwToken);
         console.log(result[0]);
       }
       else {

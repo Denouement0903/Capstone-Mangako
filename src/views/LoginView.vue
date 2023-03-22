@@ -15,7 +15,7 @@
                   <div class="col-md-6 col-lg-7 d-flex align-items-center">
                     <div class="card-body p-4 p-lg-5 text-light">
       
-                      <form submit.prevent="loginCredentials">
+                      <form @submit.prevent="loginCredentials">
       
                         <div class="d-flex align-items-center mb-3 pb-1">
                           <img class="mx-auto"
@@ -34,8 +34,8 @@
                         </div>
                         <!-- password -->
                         <div class="form-outline mb-4">
-                          <input type="password" id="form2Example27" class="form-control form-control-lg mx-3" name="userPass" required/>
-                          <!-- v-model="loginInfo.userPass" -->
+                          <input type="password" id="form2Example27" class="form-control form-control-lg mx-3" name="userPass" v-model="loginInfo.userPass" required/>
+                      
                           <label class="form-label" for="form2Example27">Password</label>
                         </div>
                         <!-- <div class="text-danger text-sm-center m-2" v-if="loginInfo.userPass.length >= 0 && registerInfo.userPass.length < 6">Password can't be 0 and should at least 6 characters</div>    -->
@@ -43,7 +43,7 @@
                         <!-- commented out userPass because it is undefined in browser and does not display in json response in backend -->
 
                         <div class="pt-1 mb-4">
-                          <button class="btn btn-primary btn-lg btn-block" type="submit" @click.prevent="login(loginCredentials)">Login</button>
+                          <button class="btn btn-primary btn-lg btn-block" type="submit" @click.prevent="loginCredentials">Login</button>
                         </div>
                         <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="/register">Register here</a></p>
                       </form>

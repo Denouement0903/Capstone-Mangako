@@ -56,7 +56,7 @@
                         </div>
                         <div class="text-danger text-sm-center m-2" v-if="registerInfo.userPass != registerInfo.reEnterPassword">Passwords do not match</div>
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                          <button type="submit" class="btn btn-danger btn-lg">Register</button>
+                          <button type="submit" class="btn btn-danger btn-lg" @click="usingRegisterInfo">Register</button>
                         </div>
 
                       </form>
@@ -102,6 +102,7 @@ export default {
       this.registerInfo.emailAdd = '',
       this.registerInfo.userPass = '',
       this.registerInfo.reEnterPassword = ''
+      alert('Successfully Registered')
       console.log(this.registerInfo);
     }
   }

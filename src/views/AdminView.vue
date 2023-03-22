@@ -58,7 +58,7 @@
             </thead>
             <tbody v-for="product in products" :key="product">
               <tr>
-                <td><img class="w-100" :src=product.imgURL></td>
+                <td><img class="w-25" :src=product.imgURL></td>
                 <td>{{ product.productID }}</td>
                 <td>{{ product.prodName }}</td>
                 <td>{{ product.category }}</td>
