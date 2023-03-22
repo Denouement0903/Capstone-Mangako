@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const route = require('./controllers/index');
 const cors = require('cors');
+const {createToken, verifyAToken, authenticateToken} = require('./middleware/AuthenticatedUser')
 const {errorHandling} = require('./middleware/ErrorHandling');
 const cookieParser = require('cookie-parser');
 
@@ -32,7 +33,7 @@ app.use(
     express.json(),
     express.urlencoded({extended: true})
 )
-
+app.use(createToken, verifyAToken, authenticateToken)
 app.use(errorHandling);
 
 

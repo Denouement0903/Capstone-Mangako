@@ -42,7 +42,7 @@ route.get('/user/:userID', (req, res)=>{
     user.fetchUser(req, res);
 });
 // Login
-route.post('/login', bodyParser.json(), (req, res)=>{
+route.post('/login', bodyParser.json(),(req, res)=>{
     user.login(req, res);
 });
 // Register
