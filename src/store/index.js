@@ -2,8 +2,8 @@ import { createStore } from 'vuex'
 import axios from 'axios'
 import { useCookies } from "vue3-cookies"
 const {cookies} = useCookies()
-const backendLink = "http://localhost:3500/"
-// const backendLink = "https://mangako.onrender.com/"
+// const backendLink = "http://localhost:3500/"
+const backendLink = "https://mangako.onrender.com/"
 
 export default createStore({
   state: {
@@ -121,12 +121,15 @@ export default createStore({
         dispatch('user')
       }
     }, 
-    async adminDeleteUser({dispatch}, user, error){
-      if(error){
-        console.error(error);
+    async adminDeleteUser(context, userID){
+      const res = await axios.delete(`${backendLink}user/${userID}`);
+      const{msg, err} = await res.data;
+      if (msg) {
+        context.commit('setUsers', msg[0])
+        console.log(msg);
+        this.dispatch('adminGetUsers');
       } else {
-        await axios.delete(`/user/${user.userID}`)
-        dispatch('user')
+        context.commit('setMessage', err)
       }
     },
     async fetchProducts(context) {
@@ -173,11 +176,13 @@ export default createStore({
       const res = await axios.delete(`${backendLink}product/${productID}`);
       const {err, msg} = await res.data;
       if(msg) {
-          context.dispatch('fetchProducts');
-      }
-      if(err) {
-          context.commit('setMessage', err);
-      }
+        context.commit('setProducts', msg[0])
+        console.log(msg);
+          this.dispatch('fetchProducts');
+      } else {
+        context.commit('setMessage', err);
+      } 
+      
     }
   }
 })

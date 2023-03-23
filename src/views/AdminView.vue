@@ -2,20 +2,41 @@
     <div>
         <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInLeftBig">Admin</h1>
  <!-- =============Users Modal==================== -->
+
+ <!-- ==========Add User modal========== -->
+
+
+
+ 
 <!-- Users Modal -->
+<!-- New User -->
 <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content bg-dark opacity-75">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">New User</h1>
+        <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">New User</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <form>
+            <input class="form-control mb-1 text-light" type="text" name="firstName" id="firstName" placeholder="firstName" v-model="userInfo.firstName" required>
+
+            <input class="form-control mb-1 text-light" type="text" name="lastName" id="lastName" placeholder="lastName" v-model="userInfo.lastName" required>
+
+            <input class="form-control mb-1 text-light" type="text" name="emailAdd" id="emailAdd" placeholder="emailAdd" v-model="userInfo.emailAdd" required>
+
+            <input class="form-control mb-1 text-light" type="text" name="userPass" id="userPass" placeholder="userPass" v-model="userInfo.userPass" required>
+            
+            <input class="form-control mb-1 text-light" type="text" name="cellphoneNumber" id="cellphoneNumber" placeholder="cellphoneNumber" v-model="userInfo.cellphoneNumber" required>
+
+            <input class="form-control mb-1 text-light" type="text" name="gender" id="gender" placeholder="gender" v-model="userInfo.gender">
+            
+            <input class="form-control mb-1 text-light" type="text" name="userProfile" id="userProfile" placeholder="userProfile" v-model="userInfo.userProfile">
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" @click="addUser">Save changes</button>
       </div>
     </div>
   </div>
@@ -54,7 +75,7 @@
                    </button>
                    <!-- Delete User-->
                    <button type="button" class="btn btn-danger d-flex m-3">
-                    <i class="fa-solid fa-trash" @click="deleteUserByID(user.userID)"></i>
+                    <i class="fa-solid fa-trash" @click="deletedUserByID(user.userID)"></i>
                   </button>                  
                 </td>
             </tr>
@@ -183,10 +204,7 @@
               </tbody>
             </table>
         </div>
-
-
-
-
+        
     </div>
 </template>
 <script>
@@ -264,13 +282,13 @@ export default {
           location.reload();   
         };
 
-        let deleteProductByID = async (productsInfo) =>{
-          await store.dispatch('deleteProductByID', productsInfo.productID.splice(0, -1))
-        };
+        // let deleteProductByID = async (productsInfo) =>{
+        //   await store.dispatch('deleteProductByID', productsInfo.productID.splice(0, -1))
+        // };
         
-        let deleteUserByID = async (userInfo) =>{
-          await store.dispatch('adminDeleteUser', userInfo.userID.splice(0, -1))
-        };
+        // let deleteUserByID = async (userInfo) =>{
+        //   await store.dispatch('adminDeleteUser', userInfo.userID.splice(0, -1))
+        // };
         
         let updatedProductData = {
                 productID: '', 
@@ -298,13 +316,18 @@ export default {
             updatedProductData,
             updateProductByID,
             addProduct,
-            deleteProductByID,
-            deleteUserByID
+            // deleteProductByID,
+            // deleteUserByID
         }         
     },
     methods: {
       deletedProductByID(productID) {
-        this.$store.dispatch('deleteProductByID', productID)
+        this.$store.dispatch('deleteProductByID', productID);
+        location.reload(); 
+      },
+      deletedUserByID(userID) {
+        this.$store.dispatch('adminDeleteUser', userID);
+        location.reload();
       },
     toggleText(product) {
       product.dotsVisible = !product.dotsVisible;
