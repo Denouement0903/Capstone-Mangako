@@ -75,12 +75,19 @@ export default {
       }
     },
     methods: {
-      async loginCredentials() {
-        await this.$store.dispatch('login', this.loginInfo);
-        this.loginInfo.emailAdd = '',
-        this.userPass = ''
-      },
-    },
+  async loginCredentials() {
+    await this.$store.dispatch('login', this.loginInfo);
+    this.loginInfo.emailAdd = '';
+    this.userPass = '';
+    if (this.loginInfo.emailAdd !== null || undefined && this.loginInfo.userPass !== null || undefined) {
+      console.log(
+        "Email: ", this.loginInfo.emailAdd, 
+      "Password: ", this.loginInfo.userPass);
+      this.$router.push("/");
+    } 
+  },
+},
+
     mounted() {
       let cookieValue = this.cookies.get('LegitUser');
       console.log(cookieValue);

@@ -2,8 +2,8 @@ import { createStore } from 'vuex'
 import axios from 'axios'
 import { useCookies } from "vue3-cookies"
 const {cookies} = useCookies()
-// const backendLink = "http://localhost:3500/"
-const backendLink = "https://mangako.onrender.com/"
+const backendLink = "http://localhost:3500/"
+// const backendLink = "https://mangako.onrender.com/"
 
 export default createStore({
   state: {
@@ -65,6 +65,7 @@ export default createStore({
 },
   actions: {
     async login(context, payload){
+      // {withCredentials: true}
       const res = await axios.post(`${backendLink}login`, payload);
       const {result, err, jwToken} = await res.data;
       console.log("Token: ", jwToken);
@@ -92,22 +93,26 @@ export default createStore({
         context.commit('setMessage', err);
       }
     },    
-    async adminGetUsers({commit}, error){
-      if(error) {
-        console.error(error);
-      } else{
-        const { data } = await axios.get('/users')
-        commit('setUsers', data.users);
+    async adminGetUsers(context) {
+      const response = await axios.get(`${backendLink}users`);
+      try {
+        context.commit('setUsers', response.data.results);
+        console.log(response);
+      } catch (error) {
+        context.commit('setMessage', error.message);
+        console.log(response);
       }
     },
-    async adminCreateUser({dispatch}, user, error){
-      if(error){
-        console.error(error);
-      } else {
-        await axios.post('/user', user)
-        dispatch('user')
+    async adminCreateUser(context, payload) {
+      let res = await axios.post(`${backendLink}user/`, payload);
+      let {msg, err}  = await res.data;
+      if(msg) {
+        context.commit('setMessage', msg)
       }
-    }, 
+      if(err) {
+        context.commit('setMessage', err)
+      }
+    },
     async adminUpdateUser({dispatch}, user, error){
       if(error){
         console.error(error);
@@ -135,6 +140,7 @@ export default createStore({
       }
     },
     async fetchProductByID(context, productID){
+      // , {withCredentials: true}
       const res = await axios.get(`${backendLink}product/${productID}`);
       const {err,results} = await res.data;
       if(results){
