@@ -17,15 +17,15 @@ route.get('/cart/:userID', (req, res) => {
   });
 
 // Add single item to cart
-route.post('/cart/:userID/products', (req, res) => {
+route.post('/cart/:userID/products', bodyParser.json(),(req, res) => {
     cart.addUserCartProduct(req, res)
   });
 //   Update single item in cart
-route.put('/cart/:userID/products/:productID', (req, res) => {
+route.put('/cart/:userID/products/:productID', bodyParser.json(), (req, res) => {
     cart.updateUserCartProduct(req, res)
   });
 //  Delete single item in cart
-route.delete('/cart/:productID/products/:productID', (req, res) => {
+route.delete('/cart/:userID/products/:productID', bodyParser.json(), (req, res) => {
     cart.deleteUserCartProduct(req, res)
   });
 

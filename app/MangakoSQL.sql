@@ -27,12 +27,11 @@ CREATE TABLE Products (
   CONSTRAINT FOREIGN KEY (userID) REFERENCES Users(userID)
 );
 
--- DROP TABLE IF EXISTS Cart;
+DROP TABLE IF EXISTS Cart;
 CREATE TABLE Cart (
   userID INT NOT NULL, 
   productID INT NOT NULL,
   quantity INT NOT NULL,
-  PRIMARY KEY (userID, productID),
   FOREIGN KEY (userID) REFERENCES Users(userID),
   FOREIGN KEY (productID) REFERENCES Products(productID)
 );
