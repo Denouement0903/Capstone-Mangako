@@ -1,25 +1,5 @@
 <template>
     <div>
-        <table class="table table-bordered border-danger table-hover bg-white opacity-75">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            <th colspan="2" class="table-active">Total:</th>
-            <td colspan="2"></td>
-            </tbody>
-          </table>
           <!-- Button trigger modal -->
 <button type="button" class="btn btn-success m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Checkout

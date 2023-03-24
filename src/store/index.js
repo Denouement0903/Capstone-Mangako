@@ -14,9 +14,35 @@ export default createStore({
     message: null,
     loader: true,
     loggedInUser: null,
-    category: null
+    category: null,
+    cart: []
   },
+  getters: {
+  cartProducts: (state, getters, rootState) => {
+    return state.cart.map(item => {
+      const product = rootState.products.find(product => product.id === item.productID);
+      return {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        quantity: item.quantity
+      };
+    });
+  }},
   mutations: {
+
+    addProductToCart(state, productID, quantity) {
+      const itemIndex = state.cart.findIndex(item => item.productID === productID);
+  
+      if (itemIndex === -1) {
+        state.cart.push({ productID: productID, quantity: quantity });
+      } else {
+        state.cart[itemIndex].quantity++;
+      }
+    },
+    // setCart(state, values){
+    //   state.products = values
+    // },
     setUsers(state, values) {
       state.users = values
     },
@@ -183,6 +209,19 @@ export default createStore({
         context.commit('setMessage', err);
       } 
       
+    },
+    async getCartProducts(context, userID) {
+      try {
+        const response = await axios.get(`${backendLink}cart/${userID}`);
+        context.commit('setCart', response.data.items);
+        console.log(response);
+      } catch (error) {
+        context.commit('setMessage', error.message);
+        console.log(error);
+      }
+    },
+    async addToCart (context, productID) {
+      context.commit('addProductToCart', productID)
     }
   }
 })

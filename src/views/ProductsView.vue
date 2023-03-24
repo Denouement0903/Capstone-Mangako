@@ -40,7 +40,7 @@
                 <p class="card-text text-light"><span class="text-danger">Genre: </span>{{product.category}}</p>
                 <p class="card-text text-light"><span class="text-danger">Price: </span>R {{product.price}}</p>
                 <div class="row">
-                  <button type="button" class="btn btn-primary btn-lg m-2 p-2">Add to Cart</button>
+                  <button type="button" class="btn btn-primary btn-lg m-2 p-2" @click="addToCart(productID)">Add to Cart</button>
                   <button type="button" class="btn btn-danger btn-lg m-2 p-2"  @click="useProductID(productID)">
                     <router-link :to="{ name: 'singleProduct', params: { productID: product.productID } }">
                       View Product</router-link></button>
@@ -53,12 +53,14 @@
   </template>
   
   <script>
+  import { mapActions } from 'vuex';
   import LoaderComp from '@/components/Loader.vue';
   import { computed } from 'vue';
   import { useStore } from 'vuex';
 
   export default {
     name: 'ProductsView',
+    props: ['productStore'],
     components: {
       LoaderComp
     },
@@ -98,13 +100,17 @@
       }
     },
     methods: {
-      sortPrice() {
-        this.$store.commit("sortProductsPrice");
-      },
-      sortCategory(categories) {
-        this.$store.commit('filtering', categories);
-      },
-    }
+  sortPrice() {
+    this.$store.commit("sortProductsPrice");
+  },
+  sortCategory(categories) {
+    this.$store.commit('filtering', categories);
+  },
+  addToCart(productID) {
+    this.$store.dispatch('addToCart', productID);
+  },
+  ...mapActions(['addToCart'])
+}
   }
 </script>
 
