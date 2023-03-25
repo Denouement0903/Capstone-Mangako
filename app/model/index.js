@@ -24,6 +24,10 @@ class Cart {
     addUserCartProduct(req, res){
         const userID = req.params.userID;
         const { productID, quantity } = req.body;
+        if (!Number.isInteger(parseInt(userID))) {
+          res.status(400).send('Invalid user ID');
+          return;
+        }
         const query = `
           INSERT INTO Cart (userID, productID, quantity)
           VALUES (?, ?, ?)
@@ -32,7 +36,8 @@ class Cart {
           if (error) throw error;
           res.send('Product added to cart');
         });
-    };
+      };
+      
     updateUserCartProduct(req, res){
         const userID = req.params.userID;
         const productID = req.params.productID;
