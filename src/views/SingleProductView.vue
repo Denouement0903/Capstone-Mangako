@@ -35,7 +35,7 @@ export default {
     this.$router.push("/products");
   },
   async addToCart(product) {
-    const userID = Cookies.get('userID', );
+    const userID = Cookies.get('userID');
       console.log(userID, product.productID);
       this.$store.dispatch('addToCart', {
         userID: userID,

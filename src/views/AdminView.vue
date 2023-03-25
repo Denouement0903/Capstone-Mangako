@@ -10,41 +10,9 @@
  
 <!-- Users Modal -->
 <!-- New User -->
-<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content bg-dark opacity-75">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">New User</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-            <input class="form-control mb-1 text-light" type="text" name="firstName" id="firstName" placeholder="firstName" v-model="userInfo.firstName" required>
-
-            <input class="form-control mb-1 text-light" type="text" name="lastName" id="lastName" placeholder="lastName" v-model="userInfo.lastName" required>
-
-            <input class="form-control mb-1 text-light" type="text" name="emailAdd" id="emailAdd" placeholder="emailAdd" v-model="userInfo.emailAdd" required>
-
-            <input class="form-control mb-1 text-light" type="text" name="userPass" id="userPass" placeholder="userPass" v-model="userInfo.userPass" required>
-            
-            <input class="form-control mb-1 text-light" type="text" name="cellphoneNumber" id="cellphoneNumber" placeholder="cellphoneNumber" v-model="userInfo.cellphoneNumber" required>
-
-            <input class="form-control mb-1 text-light" type="text" name="gender" id="gender" placeholder="gender" v-model="userInfo.gender">
-            
-            <input class="form-control mb-1 text-light" type="text" name="userProfile" id="userProfile" placeholder="userProfile" v-model="userInfo.userProfile">
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" @click="addUser">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- User Button trigger modal -->
 <div class="display-4">Users</div>
-<button type="button" class="btn btn-primary my-3 d-flex" data-bs-toggle="modal" data-bs-target="#userModal">
+<button @click="returnToRegister()" type="button" class="btn btn-primary my-3 d-flex">
   <i class="fa-solid fa-plus"></i>User
   </button>
         <div class="table-responsive">
@@ -321,6 +289,9 @@ export default {
         }         
     },
     methods: {
+      returnToRegister() {
+      this.$router.push("/register");
+      },
       deletedProductByID(productID) {
         this.$store.dispatch('deleteProductByID', productID);
         location.reload(); 

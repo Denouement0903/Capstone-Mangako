@@ -9,11 +9,11 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <div class="modal-header bg-dark">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Checkout</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body bg-dark opacity-75">
           <!-- Checkout -->
           <div class="row">
             <div class="col">
@@ -84,7 +84,7 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer bg-dark">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-success">Confirm</button>
         </div>

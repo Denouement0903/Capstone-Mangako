@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 import axios from 'axios'
 import { useCookies } from "vue3-cookies"
 const {cookies} = useCookies()
-
+// import router from '@/router'
 // const backendLink = "http://localhost:3500/"
 const backendLink = "https://mangako.onrender.com/"
 
@@ -16,31 +16,18 @@ export default createStore({
     loader: true,
     loggedInUser: null,
     category: null,
-    cart: null
+    cart: null,
+    logOut:null,
+    token: null
   },
-  // getters: {
-  // cartProducts: (state, getters, rootState) => {
-  //   return state.cart.map(item => {
-  //     const product = rootState.products.find(product => product.id === item.productID);
-  //     return {
-  //       id: product.id,
-  //       name: product.name,
-  //       price: product.price,
-  //       quantity: item.quantity
-  //     };
-  //   });
-  // }},
   mutations: {
 
-    // addProductToCart(state, productID, quantity) {
-    //   const itemIndex = state.cart.findIndex(item => item.productID === productID);
-  
-    //   if (itemIndex === -1) {
-    //     state.cart.push({ productID: productID, quantity: quantity });
-    //   } else {
-    //     state.cart[itemIndex].quantity++;
-    //   }
-    // },
+    setToken(state, value) {
+      state.token = value
+    },
+    setLogOut(state){
+      state.user = null
+    },
     setCart(state, value){
       state.cart = value
     },
@@ -91,6 +78,12 @@ export default createStore({
   }
 },
   actions: {
+    async logout (context) {
+      context.commit('setLogOut');
+      cookies.remove('LegitUser')
+      cookies.remove('userId')
+      location.reload()
+    },
     async login(context, payload){
       // {withCredentials: true}
       const res = await axios.post(`${backendLink}login`, payload);
@@ -129,6 +122,10 @@ export default createStore({
         context.commit('setMessage', error.message);
         console.log(response);
       }
+    },
+    async adminGetUserByID(context, userID){
+      const res = await axios.get(`${backendLink}user/${userID}`);
+      context.commit('setUser', res.data);
     },
     async adminCreateUser(context, payload) {
       let res = await axios.post(`${backendLink}user/`, payload);
@@ -212,32 +209,26 @@ export default createStore({
       
     },
     async getCartProducts(context, userID) {
-      // try {
-      //   const response = await axios.get(`${backendLink}cart/${userID}`);
-      //   context.commit('setCart', response.data.items);
-      //   console.log(response);
-      // } catch (error) {
-      //   context.commit('setMessage', error.message);
-      //   console.log(error);
-      // }
       const res = await axios.get(`${backendLink}cart/${userID}`);
       const{err,results} = await res.data;
       if(results){
         console.log(results);
         context.commit('setCart', results)
+        console.log(userID);
       } else {
         console.log(err);
         context.commit('setMessage', err)
       }
     },
-    async addToCart(context, payload, userID){
-      
+    async addToCart(context, payload){
+      let userID = cookies.get('userID')
       const res = await axios.post(`${backendLink}cart/${userID}/products`, payload)
-      const {err,results} = await res.data;
+      const {err,results, msg} = await res.data;
       console.log(res)
+      console.log(msg);
       if(results){
-        context.commit('setMessage', results);
-      } else context.commit('setMessage', err);
+        context.commit('setCart', results);
+      } else context.commit('setMessage', err, msg);
     },
     async updateCart(context, payload){
       const res = await axios.post(`${backendLink}cart`, payload)

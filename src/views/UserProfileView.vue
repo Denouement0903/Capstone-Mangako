@@ -1,7 +1,7 @@
 <template>
     <div class="userProfile">
         <h1 class="display-1 my-5 p-5 animate__animated animate__fadeInRightBig">User Profile</h1>
-
+        <LoaderComp v-if="!user"/>
       <div class="container emp-profile">
         <form method="post">
             <div class="row">
@@ -13,17 +13,12 @@
                 <div class="col-md-6">
                     <div class="profile-head">
                                 <h5>
-                                    Deno Rautenbach
+                                    <!-- {{ user.firstName + user.lastName}} -->
                                 </h5>
                                 <h6>
-                                    Web Developer and Designer
+                                    <!-- {{ user.userProfile }} -->
                                 </h6>
-                                <p class="proile-rating">RANKINGS : <span>8/10</span></p>
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                            </li>
-                        </ul>
+                        <h3 class="display-4" role="tab">Your Info</h3>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -76,10 +71,26 @@
   </template>
   
   <script>
+  import LoaderComp from '@/components/Loader.vue'
 //   import {computed} from '@vue/runtime-core';
 //   import {useStore} from 'vuex';
   export default {
     name: 'UserProfileView',
+    components: {
+        LoaderComp
+    },
+    props: ['userID'],
+    computed: {
+        user() {
+            console.log(this.$store.state.user);
+            return this.$store.state.user;
+        },
+        
+    },
+    mounted() {
+            console.log(this.userID);
+            this.$store.dispatch('adminGetUserByID', this.userID)
+        },
     // setup() {
     //     const store = useStore();
     //     store.dispatch('adminGetUsers');
