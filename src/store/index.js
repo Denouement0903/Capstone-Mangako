@@ -15,34 +15,34 @@ export default createStore({
     loader: true,
     loggedInUser: null,
     category: null,
-    cart: []
+    cart: null
   },
-  getters: {
-  cartProducts: (state, getters, rootState) => {
-    return state.cart.map(item => {
-      const product = rootState.products.find(product => product.id === item.productID);
-      return {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        quantity: item.quantity
-      };
-    });
-  }},
+  // getters: {
+  // cartProducts: (state, getters, rootState) => {
+  //   return state.cart.map(item => {
+  //     const product = rootState.products.find(product => product.id === item.productID);
+  //     return {
+  //       id: product.id,
+  //       name: product.name,
+  //       price: product.price,
+  //       quantity: item.quantity
+  //     };
+  //   });
+  // }},
   mutations: {
 
-    addProductToCart(state, productID, quantity) {
-      const itemIndex = state.cart.findIndex(item => item.productID === productID);
+    // addProductToCart(state, productID, quantity) {
+    //   const itemIndex = state.cart.findIndex(item => item.productID === productID);
   
-      if (itemIndex === -1) {
-        state.cart.push({ productID: productID, quantity: quantity });
-      } else {
-        state.cart[itemIndex].quantity++;
-      }
-    },
-    // setCart(state, values){
-    //   state.products = values
+    //   if (itemIndex === -1) {
+    //     state.cart.push({ productID: productID, quantity: quantity });
+    //   } else {
+    //     state.cart[itemIndex].quantity++;
+    //   }
     // },
+    setCart(state, value){
+      state.cart = value
+    },
     setUsers(state, values) {
       state.users = values
     },
@@ -211,17 +211,40 @@ export default createStore({
       
     },
     async getCartProducts(context, userID) {
-      try {
-        const response = await axios.get(`${backendLink}cart/${userID}`);
-        context.commit('setCart', response.data.items);
-        console.log(response);
-      } catch (error) {
-        context.commit('setMessage', error.message);
-        console.log(error);
+      // try {
+      //   const response = await axios.get(`${backendLink}cart/${userID}`);
+      //   context.commit('setCart', response.data.items);
+      //   console.log(response);
+      // } catch (error) {
+      //   context.commit('setMessage', error.message);
+      //   console.log(error);
+      // }
+      const res = await axios.get(`${backendLink}cart/${userID}`);
+      const{err,results} = await res.data;
+      if(results){
+        console.log(results);
+        context.commit('setCart', results)
+      } else {
+        console.log(err);
+        context.commit('setMessage', err)
       }
     },
-    async addToCart (context, productID) {
-      context.commit('addProductToCart', productID)
-    }
+    async addToCart(context, payload, userID){
+      
+      const res = await axios.post(`${backendLink}cart/${userID}/products`, payload)
+      const {err,results} = await res.data;
+      console.log(res)
+      if(results){
+        context.commit('setMessage', results);
+      } else context.commit('setMessage', err);
+    },
+    async updateCart(context, payload){
+      const res = await axios.post(`${backendLink}cart`, payload)
+      const {err,results} = await res.data;
+      console.log(res)
+      if(results){
+        context.commit('setMessage', results);
+      } else context.commit('setMessage', err);
+    },
   }
 })

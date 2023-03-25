@@ -60,7 +60,7 @@
 
   export default {
     name: 'ProductsView',
-    props: ['productStore'],
+    props: ['productStorez'],
     components: {
       LoaderComp
     },

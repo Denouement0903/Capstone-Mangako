@@ -15,7 +15,7 @@
             <h4 class="card-text"><span class="text-danger">Price: </span> <br> R{{ product.price }}</h4>
             <h5 class="card-text"><span class="text-danger">Genre: </span> <br> {{ product.category }}</h5>
             <h6 class="card-text"><span class="text-danger"> Description: </span> <br> {{ product.prodDescription }}</h6>
-            <button type="button" class="btn btn-primary btn-lg m-2 p-2">Add to Cart</button>
+            <button type="button" class="btn btn-primary btn-lg m-2 p-2"  @click="addToCart(product)">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -27,13 +27,24 @@
 import LoaderComp from '../components/Loader.vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
-
+import Cookies from 'js-cookie'
 export default {
   name: 'SingleProductView',
   methods: {
     returnToProducts() {
     this.$router.push("/products");
   },
+  async addToCart(product) {
+    const userID = Cookies.get('userID', );
+      console.log(userID, product.productID);
+      this.$store.dispatch('addToCart', {
+        userID: userID,
+        payload: {
+          userID: userID,
+          productID: product.productID
+        }
+      }) 
+  }
 },
   components: {
     LoaderComp
@@ -47,6 +58,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch('fetchProductByID', this.$route.params.productID)
+    console.log(this.$route.params.productID)
   }
 };
 </script>
