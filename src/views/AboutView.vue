@@ -130,7 +130,7 @@ body {
 .content {
 	position: relative;
 	top: 0px;	
-	background: url('https://i.postimg.cc/43r5VFKz/download.gif');
+	background: url('../assets/tumblr_3afcbe17f19ae8eb95e43868daaebeb1_54a8b898_500.gif');
 	background-size: 1000px;
 	background-position: center;
 	display: flex;
