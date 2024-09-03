@@ -31,7 +31,7 @@ export default {
 }
 
 body{
-  background-image: url('https://i.postimg.cc/66LZbRNC/8ae104a88d8fd8e5c4d1a9cbea4d4c96.gif');
+  background-image: url('./assets/1090107-sunset-night-reflection-sunrise-evening-Berserk-Kentaro-Miura-dusk-dawn-darkness-computer-wallpaper.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;

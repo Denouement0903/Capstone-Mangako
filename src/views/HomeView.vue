@@ -83,7 +83,7 @@ p {
 }
 
 .book-cover {
-	background-image: url('https://i.postimg.cc/FFLvzhDR/deathnote-cover-for-download-by-deathnote-club-d1xmeas-fullview.jpg');
+	background-image: url('../assets/deathnote-cover-for-download-by-deathnote-club-d1xmeas-fullview.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	object-fit: cover;
@@ -133,7 +133,7 @@ p {
 
 .book-content {
 	transform: scale(0.9) translateY(30px);
-	background-image: url('https://i.postimg.cc/0y4YZgJz/q41pcffezvd81.jpg');
+	background-image: url('../assets/1fe5fe9a46ace018cd6c45e3e18ee7b1.jpg');
 	background-repeat: no-repeat;
   background-size: cover;
   object-fit: cover;
